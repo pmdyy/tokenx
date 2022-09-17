@@ -22,7 +22,7 @@ import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 
-export default function StyledCard({ children }) {
+export default function StyledCard({ children, ...props }) {
   const [expanded, setExpanded] = React.useState(false)
 
   const handleExpandClick = () => {
@@ -41,6 +41,7 @@ export default function StyledCard({ children }) {
         backgroundColor: '#0b1d32',
         color: '#fff',
       }}
+      {...props}
     >
       <CardHeader
         sx={{

@@ -169,7 +169,7 @@ export default function V1Layout({ title, address, children }) {
           cols={{ lg: 3, md: 3, sm: 1, xs: 1, xxs: 1 }}
           rowHeight={20}
           margin={[20, 20]}
-          measureBeforeMount={true}
+          measureBeforeMount={false}
           isResizable={false}
           isDraggable={false}
           useCSSTransforms={false}
