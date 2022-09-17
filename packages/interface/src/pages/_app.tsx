@@ -1,4 +1,5 @@
 import * as React from 'react'
+import 'components/DataGrid/styles.css'
 import CssBaseline from '@mui/material/CssBaseline'
 import Head from 'next/head'
 import createEmotionCache from 'lib/createEmotionCache'

@@ -89,16 +89,9 @@ export default function StyledCard({ children }) {
       <CardContent sx={{ width: '100%', height: '100%', flex: '1 auto', padding: '0 !important' }}>
         {children}
       </CardContent>
-      {/* <CardActions disableSpacing>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          sx={{ color: 'lightslategray' }}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-        </ExpandMore>
-      </CardActions> */}
+      <CardActions disableSpacing>
+        <div>Hi</div>
+      </CardActions>
     </Card>
   )
 }

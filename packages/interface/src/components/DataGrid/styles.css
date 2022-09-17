@@ -1,4 +1,34 @@
-@layer rdg.Cell {.c1wupbe7-0-0-beta-17 {
+.rdg::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rdg::-webkit-scrollbar-track {
+  background-color: #081422;
+}
+
+.rdg::-webkit-scrollbar-thumb {
+  background-color: rgb(89, 106, 118);
+  outline: none;
+  border-radius: 2px;
+}
+
+/* .rdg { */
+/*   &::-webkit-scrollbar { */
+/*     width: 4px; */
+/*   } */
+
+/*   &::-webkit-scrollbar-track { */
+/*     background-color: #081422; */
+/*   } */
+
+/*   &::-webkit-scrollbar-thumb { */
+/*     background-color: rgb(89, 106, 118); */
+/*     outline: none; */
+/*     border-radius: 4px; */
+/*   } */
+/* } */
+
+@layer rdg.Cell {.c1wupbe7-0-0-beta-18 {
     /*
     Cannot use these because of a Chromium bug:
     https://bugs.chromium.org/p/chromium/issues/detail?id=1326946
@@ -21,21 +51,21 @@
     outline: none
 }
 
-    .c1wupbe7-0-0-beta-17[aria-selected='true'] {
+    .c1wupbe7-0-0-beta-18[aria-selected='true'] {
       outline: 2px solid var(--rdg-selection-color);
       outline-offset: -2px;
     }
   }
 
 @layer rdg.Root {
-    .ad0kgiy7-0-0-beta-17 .c1wupbe7-0-0-beta-17 {
+    .ad0kgiy7-0-0-beta-18 .c1wupbe7-0-0-beta-18 {
       contain: style;
     }
   }
 
 @layer rdg.Cell {
 
-.c1730fa47-0-0-beta-17 {
+.c1730fa47-0-0-beta-18 {
     position: sticky;
     /* Should have a higher value than 0 to show up above unfrozen cells */
     z-index: 1
@@ -44,7 +74,7 @@
 
 @layer rdg.Cell {
 
-.c9dpaye7-0-0-beta-17 {
+.c9dpaye7-0-0-beta-18 {
     box-shadow: calc(2px * var(--rdg-sign)) 0 5px -2px rgba(136, 136, 136, 0.3)
 }
   }
@@ -64,15 +94,26 @@
       Root;
 
     @layer Defaults {
-      .r104f42s7-0-0-beta-17 *,
-      .r104f42s7-0-0-beta-17 *::before,
-      .r104f42s7-0-0-beta-17 *::after {
+      .r104f42s7-0-0-beta-18 *,
+      .r104f42s7-0-0-beta-18 *::before,
+      .r104f42s7-0-0-beta-18 *::after {
         box-sizing: inherit;
       }
     }
 
-    @layer Root {.r104f42s7-0-0-beta-17 {
-      --rdg-color: #000;   --rdg-border-color: #ddd;   --rdg-summary-border-color: #aaa;   --rdg-background-color: hsl(0deg 0% 100%);   --rdg-header-background-color: hsl(0deg 0% 97.5%);   --rdg-row-hover-background-color: hsl(0deg 0% 96%);   --rdg-row-selected-background-color: hsl(207deg 76% 92%);   --rdg-row-selected-hover-background-color: hsl(207deg 76% 88%);   --rdg-checkbox-color: hsl(207deg 100% 29%);   --rdg-checkbox-focus-color: hsl(207deg 100% 69%);   --rdg-checkbox-disabled-border-color: #ccc;   --rdg-checkbox-disabled-background-color: #ddd;
+    @layer Root {.r104f42s7-0-0-beta-18 {
+      --rdg-color: lightslategray;
+      --rdg-border-color: rgb(255 255 255 / 5%);
+      --rdg-summary-border-color: transparent;
+      --rdg-background-color: transparent;
+      --rdg-header-background-color: #06111ea5;
+      --rdg-row-hover-background-color: rgb(8 20 34 / 90%);
+      --rdg-row-selected-background-color: hsl(207deg 76% 92%);
+      --rdg-row-selected-hover-background-color: hsl(207deg 76% 88%);
+      --rdg-checkbox-color: hsl(207deg 100% 29%);
+      --rdg-checkbox-focus-color: hsl(207deg 100% 69%);
+      --rdg-checkbox-disabled-border-color: #ccc;
+      --rdg-checkbox-disabled-background-color: #ddd;
       --rdg-selection-color: #66afe9;
       --rdg-font-size: 14px;
 
@@ -93,24 +134,25 @@
       font-size: var(--rdg-font-size)
 
       /* needed on Firefox */
-}
-      .r104f42s7-0-0-beta-17::before {
+      }
+
+      .r104f42s7-0-0-beta-18::before {
         content: '';
         grid-column: 1/-1;
         grid-row: 1/-1;
       }
 
-      .r104f42s7-0-0-beta-17.rdg-dark {
+      .r104f42s7-0-0-beta-18.rdg-dark {
         --rdg-color-scheme: dark;
         --rdg-color: #ddd;   --rdg-border-color: #444;   --rdg-summary-border-color: #555;   --rdg-background-color: hsl(0deg 0% 13%);   --rdg-header-background-color: hsl(0deg 0% 10.5%);   --rdg-row-hover-background-color: hsl(0deg 0% 9%);   --rdg-row-selected-background-color: hsl(207deg 76% 42%);   --rdg-row-selected-hover-background-color: hsl(207deg 76% 38%);   --rdg-checkbox-color: hsl(207deg 100% 79%);   --rdg-checkbox-focus-color: hsl(207deg 100% 89%);   --rdg-checkbox-disabled-border-color: #000;   --rdg-checkbox-disabled-background-color: #333;
       }
 
-      .r104f42s7-0-0-beta-17.rdg-light {
+      .r104f42s7-0-0-beta-18.rdg-light {
         --rdg-color-scheme: light;
       }
 
       @media (prefers-color-scheme: dark) {
-        .r104f42s7-0-0-beta-17:not(.rdg-light) {
+        .r104f42s7-0-0-beta-18:not(.rdg-light) {
           --rdg-color: #ddd;   --rdg-border-color: #444;   --rdg-summary-border-color: #555;   --rdg-background-color: hsl(0deg 0% 13%);   --rdg-header-background-color: hsl(0deg 0% 10.5%);   --rdg-row-hover-background-color: hsl(0deg 0% 9%);   --rdg-row-selected-background-color: hsl(207deg 76% 42%);   --rdg-row-selected-hover-background-color: hsl(207deg 76% 38%);   --rdg-checkbox-color: hsl(207deg 100% 79%);   --rdg-checkbox-focus-color: hsl(207deg 100% 89%);   --rdg-checkbox-disabled-border-color: #000;   --rdg-checkbox-disabled-background-color: #333;
         }
       }
@@ -119,18 +161,18 @@
 
 @layer rdg.Root {
 
-.v7ly7s7-0-0-beta-17 {
+.v7ly7s7-0-0-beta-18 {
     user-select: none
 }
 
-    .v7ly7s7-0-0-beta-17 .r1otpg647-0-0-beta-17 {
+    .v7ly7s7-0-0-beta-18 .r1otpg647-0-0-beta-18 {
       cursor: move;
     }
   }
 
 @layer rdg.FocusSink {
 
-.fc4f4zb7-0-0-beta-17 {
+.fc4f4zb7-0-0-beta-18 {
     grid-column: 1/-1;
     pointer-events: none;
     /* Should have a higher value than 2 to show up above header row */
@@ -139,35 +181,35 @@
   }
 
 
-@layer rdg.Row {.r1otpg647-0-0-beta-17 {
+@layer rdg.Row {.r1otpg647-0-0-beta-18 {
     display: contents;
     line-height: var(--rdg-row-height);
     background-color: var(--rdg-background-color)
 }
 
-    .r1otpg647-0-0-beta-17:hover {
+    .r1otpg647-0-0-beta-18:hover {
       background-color: var(--rdg-row-hover-background-color);
     }
 
-    .r1otpg647-0-0-beta-17[aria-selected='true'] {
+    .r1otpg647-0-0-beta-18[aria-selected='true'] {
       background-color: var(--rdg-row-selected-background-color);
     }
 
-      .r1otpg647-0-0-beta-17[aria-selected='true']:hover {
+      .r1otpg647-0-0-beta-18[aria-selected='true']:hover {
         background-color: var(--rdg-row-selected-hover-background-color);
       }
   }
 
 @layer rdg.FocusSink {
 
-.rel5gk27-0-0-beta-17 {
+.rel5gk27-0-0-beta-18 {
     outline: 2px solid var(--rdg-selection-color);
     outline-offset: -2px
 }
   }
 
 @layer rdg.FocusSink {
-    .r1qymf1z7-0-0-beta-17::before {
+    .r1qymf1z7-0-0-beta-18::before {
       content: '';
       display: inline-block;
       height: 100%;
@@ -178,7 +220,7 @@
   }
 
 
-@layer rdg.CheckboxLabel {.c8rwwhf7-0-0-beta-17 {
+@layer rdg.CheckboxLabel {.c8rwwhf7-0-0-beta-18 {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -191,14 +233,14 @@
 
 @layer rdg.CheckboxInput {
 
-.c1rb4brs7-0-0-beta-17 {
+.c1rb4brs7-0-0-beta-18 {
     all: unset
 }
   }
 
 @layer rdg.CheckboxIcon {
 
-.c1bvvwcc7-0-0-beta-17 {
+.c1bvvwcc7-0-0-beta-18 {
     content: '';
     inline-size: 20px;
     block-size: 20px;
@@ -206,38 +248,38 @@
     background-color: var(--rdg-background-color)
 }
 
-    .c1rb4brs7-0-0-beta-17:checked + .c1bvvwcc7-0-0-beta-17 {
+    .c1rb4brs7-0-0-beta-18:checked + .c1bvvwcc7-0-0-beta-18 {
       background-color: var(--rdg-checkbox-color);
       outline: 4px solid var(--rdg-background-color);
       outline-offset: -6px;
     }
 
-    .c1rb4brs7-0-0-beta-17:focus + .c1bvvwcc7-0-0-beta-17 {
+    .c1rb4brs7-0-0-beta-18:focus + .c1bvvwcc7-0-0-beta-18 {
       border-color: var(--rdg-checkbox-focus-color);
     }
   }
 
 @layer rdg.CheckboxLabel {
 
-.c1yg790j7-0-0-beta-17 {
+.c1yg790j7-0-0-beta-18 {
     cursor: default
 }
 
-    .c1yg790j7-0-0-beta-17 .c1bvvwcc7-0-0-beta-17 {
+    .c1yg790j7-0-0-beta-18 .c1bvvwcc7-0-0-beta-18 {
       border-color: var(--rdg-checkbox-disabled-border-color);
       background-color: var(--rdg-checkbox-disabled-background-color);
     }
   }
 
 
-@layer rdg.GroupCellContent {.gb8l2vs7-0-0-beta-17 {
+@layer rdg.GroupCellContent {.gb8l2vs7-0-0-beta-18 {
     outline: none
 }
   }
 
 @layer rdg.GroupCellCaret {
 
-.c1ggynjl7-0-0-beta-17 {
+.c1ggynjl7-0-0-beta-18 {
     margin-inline-start: 4px;
     stroke: currentColor;
     stroke-width: 1.5px;
@@ -245,13 +287,13 @@
     vertical-align: middle
 }
 
-    .c1ggynjl7-0-0-beta-17 > path {
+    .c1ggynjl7-0-0-beta-18 > path {
       transition: d 0.1s;
     }
   }
 
 
-@layer rdg.MeasuringCell {.m1l09lto7-0-0-beta-17 {
+@layer rdg.MeasuringCell {.m1l09lto7-0-0-beta-18 {
     contain: strict;
     grid-row: 1;
     visibility: hidden
@@ -259,19 +301,19 @@
   }
 
 
-@layer rdg.SortableHeaderCell {.h1e8ezgp7-0-0-beta-17 {
+@layer rdg.SortableHeaderCell {.h1e8ezgp7-0-0-beta-18 {
     cursor: pointer;
     display: flex
 }
 
-    .h1e8ezgp7-0-0-beta-17:focus {
+    .h1e8ezgp7-0-0-beta-18:focus {
       outline: none;
     }
   }
 
 @layer rdg.SortableHeaderCellName {
 
-.h1rrblhe7-0-0-beta-17 {
+.h1rrblhe7-0-0-beta-18 {
     flex-grow: 1;
     overflow: hidden;
     overflow: clip;
@@ -280,11 +322,11 @@
   }
 
 
-@layer rdg.HeaderCell {.celq7o97-0-0-beta-17 {
+@layer rdg.HeaderCell {.celq7o97-0-0-beta-18 {
     touch-action: none
 }
 
-    .celq7o97-0-0-beta-17::after {
+    .celq7o97-0-0-beta-18::after {
       content: '';
       cursor: col-resize;
       position: absolute;
@@ -296,100 +338,100 @@
   }
 
 
-@layer rdg.HeaderRow {.h197vzie7-0-0-beta-17 {
+@layer rdg.HeaderRow {.h197vzie7-0-0-beta-18 {
     display: contents;
     line-height: var(--rdg-header-row-height);
     background-color: var(--rdg-header-background-color);
     font-weight: bold
 }
 
-    .h197vzie7-0-0-beta-17 > .c1wupbe7-0-0-beta-17 {
+    .h197vzie7-0-0-beta-18 > .c1wupbe7-0-0-beta-18 {
       /* Should have a higher value than 0 to show up above regular cells */
       z-index: 1;
       position: sticky;
       inset-block-start: 0;
     }
 
-    .h197vzie7-0-0-beta-17 > .c1730fa47-0-0-beta-17 {
+    .h197vzie7-0-0-beta-18 > .c1730fa47-0-0-beta-18 {
       z-index: 2;
     }
   }
 
 
-@layer rdg.Cell {.ccpfvsn7-0-0-beta-17 {
+@layer rdg.Cell {.ccpfvsn7-0-0-beta-18 {
     background-color: #ccccff
 }
   }
 
 @layer rdg.Cell {
 
-.c1bmg16t7-0-0-beta-17 {
+.c1bmg16t7-0-0-beta-18 {
     background-color: #ccccff
 }
 
-    .c1bmg16t7-0-0-beta-17.ccpfvsn7-0-0-beta-17 {
+    .c1bmg16t7-0-0-beta-18.ccpfvsn7-0-0-beta-18 {
       background-color: #9999ff;
     }
   }
 
 
 @layer rdg.GroupedRow {
-    .gyxx7e97-0-0-beta-17:not([aria-selected='true']) {
+    .gyxx7e97-0-0-beta-18:not([aria-selected='true']) {
       background-color: var(--rdg-header-background-color);
     }
 
-    .gyxx7e97-0-0-beta-17 > .c1wupbe7-0-0-beta-17:not(:last-child):not(.c9dpaye7-0-0-beta-17) {
+    .gyxx7e97-0-0-beta-18 > .c1wupbe7-0-0-beta-18:not(:last-child):not(.c9dpaye7-0-0-beta-18) {
       border-inline-end: none;
     }
   }
 
 
-@layer rdg.SummaryCell {.s1n3hxke7-0-0-beta-17 {
+@layer rdg.SummaryCell {.s1n3hxke7-0-0-beta-18 {
     inset-block-start: var(--rdg-summary-row-top);
     inset-block-end: var(--rdg-summary-row-bottom)
 }
   }
 
 
-@layer rdg.SummaryRow {.snfqesz7-0-0-beta-17 {
+@layer rdg.SummaryRow {.snfqesz7-0-0-beta-18 {
     line-height: var(--rdg-summary-row-height)
 }
 
-    .snfqesz7-0-0-beta-17 > .c1wupbe7-0-0-beta-17 {
+    .snfqesz7-0-0-beta-18 > .c1wupbe7-0-0-beta-18 {
       position: sticky;
     }
   }
 
 @layer rdg.SummaryRow {
-    .t1jijrjz7-0-0-beta-17 > .c1wupbe7-0-0-beta-17 {
+    .t1jijrjz7-0-0-beta-18 > .c1wupbe7-0-0-beta-18 {
       z-index: 1;
     }
 
-    .t1jijrjz7-0-0-beta-17 > .c1730fa47-0-0-beta-17 {
+    .t1jijrjz7-0-0-beta-18 > .c1730fa47-0-0-beta-18 {
       z-index: 2;
     }
   }
 
 @layer rdg.SummaryRow {
-    .t14bmecc7-0-0-beta-17 > .c1wupbe7-0-0-beta-17 {
+    .t14bmecc7-0-0-beta-18 > .c1wupbe7-0-0-beta-18 {
       border-block-end: 2px solid var(--rdg-summary-border-color);
     }
   }
 
 @layer rdg.SummaryRow {
-    .b1odhhml7-0-0-beta-17 > .c1wupbe7-0-0-beta-17 {
+    .b1odhhml7-0-0-beta-18 > .c1wupbe7-0-0-beta-18 {
       border-block-start: 2px solid var(--rdg-summary-border-color);
     }
   }
 
 
-@layer rdg.EditCell {.c1tngyp17-0-0-beta-17 {
+@layer rdg.EditCell {.c1tngyp17-0-0-beta-18 {
     padding: 0
 }
   }
 
 
-@layer rdg.DragHandle {.cadd3bp7-0-0-beta-17 {
+@layer rdg.DragHandle {.cadd3bp7-0-0-beta-18 {
     cursor: move;
     position: absolute;
     inset-inline-end: 0;
@@ -399,7 +441,7 @@
     background-color: var(--rdg-selection-color)
 }
 
-    .cadd3bp7-0-0-beta-17:hover {
+    .cadd3bp7-0-0-beta-18:hover {
       inline-size: 16px;
       block-size: 16px;
       border: 2px solid var(--rdg-selection-color);
@@ -408,17 +450,17 @@
   }
 
 
-@layer rdg.SortIcon {.a1mygwml7-0-0-beta-17 {
+@layer rdg.SortIcon {.a1mygwml7-0-0-beta-18 {
     fill: currentColor
 }
 
-    .a1mygwml7-0-0-beta-17 > path {
+    .a1mygwml7-0-0-beta-18 > path {
       transition: d 0.1s;
     }
   }
 
 
-@layer rdg.TextEditor {.tlmcuo07-0-0-beta-17 {
+@layer rdg.TextEditor {.tlmcuo07-0-0-beta-18 {
     appearance: none;
 
     box-sizing: border-box;
@@ -435,12 +477,12 @@
     font-size: var(--rdg-font-size)
 }
 
-    .tlmcuo07-0-0-beta-17:focus {
+    .tlmcuo07-0-0-beta-18:focus {
       border-color: var(--rdg-selection-color);
       outline: none;
     }
 
-    .tlmcuo07-0-0-beta-17::placeholder {
+    .tlmcuo07-0-0-beta-18::placeholder {
       color: #999;
       opacity: 1;
     }
