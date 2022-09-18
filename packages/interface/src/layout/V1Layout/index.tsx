@@ -28,6 +28,7 @@ import { Responsive } from 'react-grid-layout'
 import { Theme } from '@mui/material'
 import { useRouter } from 'next/router'
 import sizeMeHOC from 'components/sizeMeHOC'
+import { withSize } from 'react-sizeme'
 
 const V1LayoutWrapper = styled.div<{ theme?: Theme }>`
   display: flex;
@@ -186,6 +187,7 @@ export default function V1Layout({ title, address, children }) {
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         >
           {children}
+          <div key={'placeholder'} data-grid={{ i: 'placeholder', x: 0, y: 2, w: 3, h: 3 }} />
         </ResponsiveGridLayout>
       </V1LayoutWrapper>
     </Layout>
