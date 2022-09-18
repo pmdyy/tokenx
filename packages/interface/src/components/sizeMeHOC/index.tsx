@@ -8,10 +8,12 @@ const sizeMeHOC = sizeMe({
 
 export default (ComposedComponent) =>
   sizeMeHOC(
-    class extends Component {
+    class extends Component<any, any> {
       render() {
         const { width } = this.props.size
         return <ComposedComponent {...this.props} width={width} {...this.state} />
       }
     }
   )
+
+sizeMeHOC.displayName = 'SizeMeHoc'

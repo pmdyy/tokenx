@@ -22,7 +22,7 @@ import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 
-const StyledCard = React.forwardRef(({ children, ...props }, ref) => {
+const StyledCard = React.forwardRef<HTMLDivElement, any>(({ children, ...props }, ref) => {
   const [expanded, setExpanded] = React.useState(false)
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -93,5 +93,7 @@ const StyledCard = React.forwardRef(({ children, ...props }, ref) => {
     </Card>
   )
 })
+
+StyledCard.displayName = 'Card'
 
 export default StyledCard
