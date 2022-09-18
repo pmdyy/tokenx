@@ -94,7 +94,7 @@ function createRows(): readonly Row[] {
   const now = Date.now()
   const rows: Row[] = []
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     rows.push({
       id: i,
       title: `Task #${i + 1}`,
@@ -165,7 +165,7 @@ export default function CommonFeatures() {
       rows={sortedRows}
       defaultColumnOptions={{
         sortable: true,
-        resizable: true,
+        resizable: false,
       }}
       selectedRows={selectedRows}
       onSelectedRowsChange={setSelectedRows}

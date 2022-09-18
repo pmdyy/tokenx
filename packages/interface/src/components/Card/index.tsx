@@ -45,7 +45,7 @@ export default function StyledCard({ children, ...props }) {
     >
       <CardHeader
         sx={{
-          position: 'relative',
+          position: 'absolute',
           width: '100%',
           zIndex: 10,
           padding: '8px',
@@ -90,9 +90,7 @@ export default function StyledCard({ children, ...props }) {
       <CardContent sx={{ width: '100%', height: '100%', flex: '1 auto', padding: '0 !important' }}>
         {children}
       </CardContent>
-      <CardActions disableSpacing>
-        <div>Hi</div>
-      </CardActions>
+      {/*<CardActions disableSpacing></CardActions>*/}
     </Card>
   )
 }

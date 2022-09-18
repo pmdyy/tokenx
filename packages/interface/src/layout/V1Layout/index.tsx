@@ -87,6 +87,11 @@ function V1LayoutNav() {
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 export default function V1Layout({ title, address, children }) {
+  const [currentBreakpoint, setCurrentBreakpoint] = React.useState('lg')
+  const [mounted, setMounted] = React.useState(false)
+  const [layouts, setLayouts] = React.useState({
+    lg: [{ i: '0', x: 0, y: 0, w: 3, h: 12, static: false }],
+  })
   return (
     <Layout>
       <V1LayoutWrapper>
@@ -167,12 +172,15 @@ export default function V1Layout({ title, address, children }) {
         <ResponsiveGridLayout
           className="layout"
           cols={{ lg: 3, md: 3, sm: 1, xs: 1, xxs: 1 }}
+          layouts={layouts}
           rowHeight={20}
           margin={[20, 20]}
-          measureBeforeMount={false}
+          measureBeforeMount={true}
           isResizable={false}
           isDraggable={false}
           useCSSTransforms={false}
+          compactType="vertical"
+          preventCollision={true}
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         >
           {children}
