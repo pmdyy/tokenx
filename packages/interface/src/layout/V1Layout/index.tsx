@@ -34,8 +34,8 @@ const V1LayoutWrapper = styled.div<{ theme?: Theme }>`
   flex-direction: column;
   grid-area: content/content/content/content;
   flex: 1 auto;
-  height: 100vh;
   overflow-y: auto;
+  padding-bottom: 1rem;
 
   &::-webkit-scrollbar {
     width: 4px;
