@@ -1,188 +1,106 @@
-import React from 'react'
+import * as React from 'react'
 import Box from '@mui/material/Box'
-import DataGrid, { Column, SortColumn, SelectColumn, textEditor, SelectCellFormatter } from 'react-data-grid'
-import styled from '@emotion/styled'
-import withControls from './withControls'
-import { createPortal } from 'react-dom'
-import { faker } from '@faker-js/faker'
-import { useState, useMemo } from 'react'
-import ProgressBar from './ProgressBar'
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
 
-interface Row {
-  id: number
-  title: string
-  client: string
-  progress: number
-  budget: number
-  account: string
-  version: string
-  available: boolean
-}
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'firstName',
+    headerName: 'First name',
+    width: 150,
+    pinnable: true,
+  },
+  {
+    field: 'lastName',
+    headerName: 'Last name',
+    width: 150,
+  },
+  {
+    field: 'age',
+    headerName: 'Age',
+    type: 'number',
+    width: 110,
+  },
+  {
+    field: 'fullName',
+    headerName: 'Full name',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+    valueGetter: (params: GridValueGetterParams) => `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  },
+]
 
-function getColumns(): readonly Column<Row>[] {
-  return [
-    SelectColumn,
-    {
-      key: 'id',
-      name: 'ID',
-      width: 60,
-      frozen: true,
-      resizable: false,
-      summaryFormatter() {
-        return <strong>Total</strong>
-      },
-    },
-    {
-      key: 'title',
-      name: 'Task',
-      width: 120,
-      frozen: true,
-    },
-    {
-      key: 'client',
-      name: 'Client',
-    },
-    {
-      key: 'progress',
-      name: 'Completion',
-      width: 150,
-      resizable: false,
-      formatter(props) {
-        const value = props.row.progress
-        return <ProgressBar value={value} />
-      },
-    },
-    {
-      key: 'budget',
-      name: 'Budget',
-      width: 100,
-    },
-    {
-      key: 'account',
-      name: 'Account',
-      width: 150,
-    },
-    {
-      key: 'version',
-      name: 'Version',
-      editor: textEditor,
-    },
-    {
-      key: 'available',
-      name: 'Available',
-      width: 80,
-      formatter({ row, onRowChange, isCellSelected }) {
-        return (
-          <SelectCellFormatter
-            value={row.available}
-            onChange={() => {
-              onRowChange({ ...row, available: row.available })
-            }}
-            isCellSelected={isCellSelected}
-          />
-        )
-      },
-    },
-  ]
-}
+const rows = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 8 },
+  { id: 6, lastName: 'Melisandre', firstName: 'Ary', age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 10, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 11, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 12, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 13, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 14, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 15, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 16, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 17, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 18, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 19, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 20, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 21, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 22, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 23, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 24, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 25, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 26, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 27, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 28, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 29, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+]
 
-function rowKeyGetter(row: Row) {
-  return row.id
-}
-
-function createRows(): readonly Row[] {
-  const now = Date.now()
-  const rows: Row[] = []
-
-  for (let i = 0; i < 100; i++) {
-    rows.push({
-      id: i,
-      title: `Task #${i + 1}`,
-      client: faker.company.name(),
-      progress: Math.random() * 100,
-      budget: 500 + Math.random() * 10500,
-      account: faker.finance.iban(),
-      version: faker.system.semver(),
-      available: Math.random() > 0.5,
-    })
-  }
-
-  return rows
-}
-
-type Comparator = (a: Row, b: Row) => number
-function getComparator(sortColumn: string): Comparator {
-  switch (sortColumn) {
-    case 'title':
-    case 'client':
-    case 'country':
-    case 'account':
-    case 'version':
-      return (a, b) => {
-        return a[sortColumn].localeCompare(b[sortColumn])
-      }
-    case 'available':
-      return (a, b) => {
-        return a[sortColumn] === b[sortColumn] ? 0 : a[sortColumn] ? 1 : -1
-      }
-    case 'id':
-    case 'progress':
-    case 'budget':
-      return (a, b) => {
-        return a[sortColumn] - b[sortColumn]
-      }
-    default:
-      throw new Error(`unsupported sortColumn: "${sortColumn}"`)
-  }
-}
-
-export default function CommonFeatures() {
-  const [rows, setRows] = useState(createRows)
-  const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([])
-  const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(() => new Set())
-
-  const columns = useMemo(() => getColumns(), [])
-
-  const sortedRows = useMemo((): readonly Row[] => {
-    if (sortColumns.length === 0) return rows
-
-    return [...rows].sort((a, b) => {
-      for (const sort of sortColumns) {
-        const comparator = getComparator(sort.columnKey)
-        const compResult = comparator(a, b)
-        if (compResult !== 0) {
-          return sort.direction === 'ASC' ? compResult : -compResult
-        }
-      }
-      return 0
-    })
-  }, [rows, sortColumns])
-
-  const gridElement = (
-    <DataGrid
-      rowKeyGetter={rowKeyGetter}
-      columns={columns}
-      rows={sortedRows}
-      defaultColumnOptions={{
-        sortable: true,
-        resizable: false,
-      }}
-      selectedRows={selectedRows}
-      onSelectedRowsChange={setSelectedRows}
-      onRowsChange={setRows}
-      sortColumns={sortColumns}
-      onSortColumnsChange={setSortColumns}
-      style={{
-        width: '100%',
+export default function DataGridDemo() {
+  return (
+    <Box
+      sx={{
         height: '100%',
+        width: '100%',
       }}
-      direction={'ltr'}
-    />
+    >
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={20}
+        rowsPerPageOptions={[20]}
+        checkboxSelection
+        disableSelectionOnClick
+        density={'compact'}
+        experimentalFeatures={{ newEditingApi: false }}
+        sx={{
+          border: 'none',
+          '& .MuiDataGrid-cell': {
+            borderBottom: 'none',
+          },
+          '& .super-app-theme--header': {
+            backgroundColor: 'red',
+          },
+          '&::-webkit-scrollbar': {
+            width: '4px',
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: '#081422',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgb(89, 106, 118)',
+            outline: 'none',
+            borderRadius: '4px',
+          },
+        }}
+      />
+    </Box>
   )
-
-  return <>{gridElement}</>
 }
-
-// export default withControls(({ columns, rows }) => {
-//   return <DataGrid style={{ color: 'red', backgroundColor: '#0b1d32', border: 'none' }} columns={columns} rows={rows} />
-// })

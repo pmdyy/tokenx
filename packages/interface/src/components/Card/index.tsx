@@ -45,7 +45,7 @@ export default function StyledCard({ children, ...props }) {
     >
       <CardHeader
         sx={{
-          position: 'absolute',
+          position: 'relative',
           width: '100%',
           zIndex: 10,
           padding: '8px',
