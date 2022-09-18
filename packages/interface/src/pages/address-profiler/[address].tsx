@@ -19,7 +19,7 @@ export default withRouter<any>(({ router }) => {
     <V1Layout title={'NFT Vision'} address={address}>
       {layouts.map((item) => (
         <Card key={item.i} data-grid={item}>
-          <ThresholdChart />
+          <DataGrid />
         </Card>
       ))}
     </V1Layout>
