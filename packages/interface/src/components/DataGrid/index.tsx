@@ -64,6 +64,7 @@ const rows = [
   { id: 27, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
   { id: 28, lastName: 'Frances', firstName: 'Rossini', age: 36 },
   { id: 29, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 30, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ]
 
 const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
