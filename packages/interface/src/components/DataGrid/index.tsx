@@ -1,6 +1,9 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+import { alpha, styled } from '@mui/material/styles'
+import { DataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+
+const ODD_OPACITY = 0.2
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -63,15 +66,65 @@ const rows = [
   { id: 29, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ]
 
+const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
+  border: 'none',
+  '& .MuiDataGrid-columnHeaders': {
+    backgroundColor: '#0c243e',
+    borderBottom: 'none',
+    boxShadow: '0px 10px 10px 5px rgb(0 0 0 / 15%)',
+    zIndex: '10',
+  },
+  '& .MuiDataGrid-cell': {
+    borderBottom: 'none',
+  },
+  '& .MuiDataGrid-footerContainer': {
+    borderTop: 'none',
+  },
+  '& .MuiDataGrid-columnSeparator': {
+    visibility: 'hidden',
+  },
+  '& .super-app-theme--header': {
+    backgroundColor: 'red',
+  },
+  '& ::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '& ::-webkit-scrollbar-track': {
+    backgroundColor: 'transparent',
+  },
+  '& ::-webkit-scrollbar-thumb': {
+    backgroundColor: 'rgb(89, 106, 118)',
+    outline: 'none',
+    borderRadius: '4px',
+  },
+  [`& .${gridClasses.row}.odd`]: {
+    backgroundColor: '#0c243e',
+    '&:hover, &.Mui-hovered': {
+      backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY),
+      '@media (hover: none)': {
+        backgroundColor: 'transparent',
+      },
+    },
+    '&.Mui-selected': {
+      backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY + theme.palette.action.selectedOpacity),
+      '&:hover, &.Mui-hovered': {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          ODD_OPACITY + theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity
+        ),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY + theme.palette.action.selectedOpacity),
+        },
+      },
+    },
+  },
+}))
+
 export default function DataGridDemo() {
   return (
-    <Box
-      sx={{
-        height: '100%',
-        width: '100%',
-      }}
-    >
-      <DataGrid
+    <Box sx={{ height: '100%', width: '100%' }}>
+      <StripedDataGrid
         rows={rows}
         columns={columns}
         pageSize={20}
@@ -80,26 +133,7 @@ export default function DataGridDemo() {
         disableSelectionOnClick
         density={'compact'}
         experimentalFeatures={{ newEditingApi: false }}
-        sx={{
-          border: 'none',
-          '& .MuiDataGrid-cell': {
-            borderBottom: 'none',
-          },
-          '& .super-app-theme--header': {
-            backgroundColor: 'red',
-          },
-          '&::-webkit-scrollbar': {
-            width: '4px',
-          },
-          '&::-webkit-scrollbar-track': {
-            backgroundColor: '#081422',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            backgroundColor: 'rgb(89, 106, 118)',
-            outline: 'none',
-            borderRadius: '4px',
-          },
-        }}
+        getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
       />
     </Box>
   )
