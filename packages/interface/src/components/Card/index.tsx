@@ -22,15 +22,14 @@ import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 
-export default function StyledCard({ children, ...props }) {
+const StyledCard = React.forwardRef(({ children, ...props }, ref) => {
   const [expanded, setExpanded] = React.useState(false)
-
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
-
   return (
     <Card
+      ref={ref}
       elevation={0}
       sx={{
         display: 'flex',
@@ -93,4 +92,6 @@ export default function StyledCard({ children, ...props }) {
       {/*<CardActions disableSpacing></CardActions>*/}
     </Card>
   )
-}
+})
+
+export default StyledCard
