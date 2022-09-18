@@ -24,9 +24,10 @@ import Typography from '@mui/material/Typography'
 import WalletTwoToneIcon from '@mui/icons-material/WalletTwoTone'
 import styled from '@emotion/styled'
 import type { NextPage } from 'next'
-import { Responsive, WidthProvider } from 'react-grid-layout'
+import { Responsive } from 'react-grid-layout'
 import { Theme } from '@mui/material'
 import { useRouter } from 'next/router'
+import sizeMeHOC from 'components/sizeMeHOC'
 
 const V1LayoutWrapper = styled.div<{ theme?: Theme }>`
   display: flex;
@@ -84,7 +85,7 @@ function V1LayoutNav() {
   )
 }
 
-const ResponsiveGridLayout = WidthProvider(Responsive)
+const ResponsiveGridLayout = sizeMeHOC(Responsive)
 
 export default function V1Layout({ title, address, children }) {
   const [currentBreakpoint, setCurrentBreakpoint] = React.useState('lg')
