@@ -60,6 +60,12 @@ const V1LayoutHeader = styled(Box)<{ theme?: Theme }>`
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightBlue};
 `
 
+const V1LayoutBody = styled(Box)<{ theme?: Theme }>`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
 function V1LayoutNav() {
   const [value, setValue] = React.useState(0)
 
@@ -168,7 +174,7 @@ export default function V1Layout({ title, address, children }) {
           </Box>
         </V1LayoutHeader>
         <V1LayoutNav />
-        {children}
+        <V1LayoutBody>{children}</V1LayoutBody>
       </V1LayoutWrapper>
     </Layout>
   )

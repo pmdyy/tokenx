@@ -6,7 +6,8 @@ import Box from '@mui/material/Box'
 import Card from 'components/Card'
 import ThresholdChart from 'components/ThresholdChart'
 import V1Layout from 'layout/V1Layout'
-const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
+// const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
+import DataGrid from 'components/DataGrid'
 
 export default withRouter<any>(({ router }) => {
   const { address } = router.query
@@ -17,11 +18,22 @@ export default withRouter<any>(({ router }) => {
   const ref = React.createRef()
   return (
     <V1Layout title={'NFT Vision'} address={address}>
-      {layouts.map((item) => (
-        <Card key={item.i}>
-          <DataGrid />
-        </Card>
-      ))}
+      <div
+        style={{
+          display: 'grid',
+          padding: '2rem',
+          gap: '2rem',
+          maxWidth: '1500px',
+          width: '100%',
+          marginBottom: '10rem',
+        }}
+      >
+        {layouts.map((item) => (
+          <Card key={item.i}>
+            <DataGrid />
+          </Card>
+        ))}
+      </div>
     </V1Layout>
   )
 })
