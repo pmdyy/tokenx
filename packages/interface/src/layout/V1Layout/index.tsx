@@ -27,8 +27,6 @@ import type { NextPage } from 'next'
 import { Responsive } from 'react-grid-layout'
 import { Theme } from '@mui/material'
 import { useRouter } from 'next/router'
-import sizeMeHOC from 'components/sizeMeHOC'
-import { withSize } from 'react-sizeme'
 
 const V1LayoutWrapper = styled.div<{ theme?: Theme }>`
   display: flex;
@@ -86,8 +84,6 @@ function V1LayoutNav() {
     </Box>
   )
 }
-
-const ResponsiveGridLayout = sizeMeHOC(Responsive)
 
 export default function V1Layout({ title, address, children }) {
   const [currentBreakpoint, setCurrentBreakpoint] = React.useState('lg')
@@ -172,23 +168,7 @@ export default function V1Layout({ title, address, children }) {
           </Box>
         </V1LayoutHeader>
         <V1LayoutNav />
-        <ResponsiveGridLayout
-          className="layout"
-          cols={{ lg: 3, md: 3, sm: 1, xs: 1, xxs: 1 }}
-          layouts={layouts}
-          rowHeight={20}
-          margin={[30, 30]}
-          measureBeforeMount={true}
-          isResizable={false}
-          isDraggable={false}
-          useCSSTransforms={false}
-          compactType="vertical"
-          preventCollision={true}
-          breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-        >
-          {children}
-          <div key={'placeholder'} data-grid={{ i: 'placeholder', x: 0, y: 2, w: 3, h: 3 }} />
-        </ResponsiveGridLayout>
+        {children}
       </V1LayoutWrapper>
     </Layout>
   )

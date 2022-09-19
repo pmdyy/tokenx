@@ -18,7 +18,7 @@ export default withRouter<any>(({ router }) => {
   return (
     <V1Layout title={'NFT Vision'} address={address}>
       {layouts.map((item) => (
-        <Card ref={ref} key={item.i} data-grid={item}>
+        <Card key={item.i}>
           <DataGrid />
         </Card>
       ))}
