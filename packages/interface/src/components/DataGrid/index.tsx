@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import Box from '@mui/material/Box'
 import { alpha, styled } from '@mui/material/styles'
 import { DataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
@@ -126,6 +126,7 @@ export default function DataGridDemo() {
   return (
     <Box sx={{ height: '100%', width: '100%' }}>
       <StripedDataGrid
+        autoHeight
         rows={rows}
         columns={columns}
         pageSize={20}
