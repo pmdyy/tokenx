@@ -4,15 +4,13 @@ import dynamic from 'next/dynamic'
 import { getLayout } from 'layout/DashboardLayout'
 // import DataGrid from 'components/DataGrid'
 const DataGrid = dynamic(() => import('components/DataGrid'), {
-  suspense: true,
+  ssr: true,
 })
 
 const TokenOverview = () => (
   <>
     <Card>
-      <Suspense fallback={`Loading...`}>
         <DataGrid />
-      </Suspense>
     </Card>
   </>
 )
