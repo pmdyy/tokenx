@@ -1,8 +1,8 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import Box from '@mui/material/Box'
 import { alpha, styled } from '@mui/material/styles'
 import { DataGrid as MuiDataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
-import { DataGridPro } from '@mui/x-data-grid-pro';
 
 const ODD_OPACITY = 0.2
 
@@ -68,67 +68,66 @@ const rows = [
   { id: 30, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ]
 
-// const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
-//   border: 'none',
-//   '& .MuiDataGrid-columnHeaders': {
-//     backgroundColor: '#0c243e',
-//     borderBottom: 'none',
-//     boxShadow: '0px 10px 10px 5px rgb(0 0 0 / 15%)',
-//     zIndex: '10',
-//   },
-//   '& .MuiDataGrid-cell': {
-//     borderBottom: 'none',
-//   },
-//   '& .MuiDataGrid-footerContainer': {
-//     borderTop: 'none',
-//   },
-//   '& .MuiDataGrid-columnSeparator': {
-//     visibility: 'hidden',
-//   },
-//   '& .super-app-theme--header': {
-//     backgroundColor: 'red',
-//   },
-//   '& ::-webkit-scrollbar': {
-//     width: '8px',
-//   },
-//   '& ::-webkit-scrollbar-track': {
-//     backgroundColor: 'transparent',
-//   },
-//   '& ::-webkit-scrollbar-thumb': {
-//     backgroundColor: 'rgb(89, 106, 118)',
-//     outline: 'none',
-//     borderRadius: '4px',
-//   },
-//   [`& .${gridClasses.row}.odd`]: {
-//     backgroundColor: '#0c243e',
-//     '&:hover, &.Mui-hovered': {
-//       backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY),
-//       '@media (hover: none)': {
-//         backgroundColor: 'transparent',
-//       },
-//     },
-//     '&.Mui-selected': {
-//       backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY + theme.palette.action.selectedOpacity),
-//       '&:hover, &.Mui-hovered': {
-//         backgroundColor: alpha(
-//           theme.palette.primary.main,
-//           ODD_OPACITY + theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity
-//         ),
-//         // Reset on touch devices, it doesn't add specificity
-//         '@media (hover: none)': {
-//           backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY + theme.palette.action.selectedOpacity),
-//         },
-//       },
-//     },
-//   },
-// }))
+const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
+  border: 'none',
+  '& .MuiDataGrid-columnHeaders': {
+    backgroundColor: '#0c243e',
+    borderBottom: 'none',
+    boxShadow: '0px 10px 10px 5px rgb(0 0 0 / 15%)',
+    zIndex: '10',
+  },
+  '& .MuiDataGrid-cell': {
+    borderBottom: 'none',
+  },
+  '& .MuiDataGrid-footerContainer': {
+    borderTop: 'none',
+  },
+  '& .MuiDataGrid-columnSeparator': {
+    visibility: 'hidden',
+  },
+  '& .super-app-theme--header': {
+    backgroundColor: 'red',
+  },
+  '& ::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '& ::-webkit-scrollbar-track': {
+    backgroundColor: 'transparent',
+  },
+  '& ::-webkit-scrollbar-thumb': {
+    backgroundColor: 'rgb(89, 106, 118)',
+    outline: 'none',
+    borderRadius: '4px',
+  },
+  [`& .${gridClasses.row}.odd`]: {
+    backgroundColor: '#0c243e',
+    '&:hover, &.Mui-hovered': {
+      backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY),
+      '@media (hover: none)': {
+        backgroundColor: 'transparent',
+      },
+    },
+    '&.Mui-selected': {
+      backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY + theme.palette.action.selectedOpacity),
+      '&:hover, &.Mui-hovered': {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          ODD_OPACITY + theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity
+        ),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: alpha(theme.palette.primary.main, ODD_OPACITY + theme.palette.action.selectedOpacity),
+        },
+      },
+    },
+  },
+}))
 
 function DataGrid() {
   return (
     <Box sx={{ height: 800, width: '100%' }}>
-      <DataGridPro
+      <StripedDataGrid
         rows={rows}
-        loading={true}
         columns={columns}
         pageSize={20}
         rowsPerPageOptions={[20]}
