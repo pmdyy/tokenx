@@ -59,12 +59,11 @@ const Body = styled(Box)<{ theme?: Theme }>`
   width: 100%;
 `
 
-const BodyWrapper = styled(Box)`
+const BodyWrapper = styled(Box)<{ theme?: Theme }>`
   display: grid;
   width: 1700px;
-  padding: 2em;
-  gap: 2rem;
-  margin-bottom: 4em;
+  margin-bottom: 8rem;
+  padding: 1rem;
 `
 
 const Nav = () => {
