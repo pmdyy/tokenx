@@ -124,17 +124,16 @@ const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
 
 function DataGrid() {
   return (
-    <Box sx={{ height: '100%', width: '100%' }}>
+    <Box sx={{ height: 800, width: '100%' }}>
       <StripedDataGrid
-        autoHeight
         rows={rows}
+        loading={rows === 0 ? true : false}
         columns={columns}
         pageSize={20}
         rowsPerPageOptions={[20]}
         checkboxSelection
         disableSelectionOnClick
         density={'compact'}
-        experimentalFeatures={{ newEditingApi: false }}
         getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
       />
     </Box>

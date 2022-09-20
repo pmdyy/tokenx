@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
 import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
+import TollIcon from '@mui/icons-material/Toll'
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
@@ -17,6 +18,7 @@ import styled from '@emotion/styled'
 import { Theme } from '@mui/material'
 import { getLayout as getBaseLayout } from 'layout/BaseLayout'
 import { useRouter } from 'next/router'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DashboardProvider, { Context as DashboardContext } from 'providers/DashboardProvider'
 
 const Wrapper = styled.div<{ theme?: Theme }>`
@@ -61,6 +63,7 @@ const BodyWrapper = styled(Box)`
   display: grid;
   width: 1700px;
   padding: 2em;
+  gap: 2rem;
   margin-bottom: 4em;
 `
 
@@ -115,7 +118,7 @@ class DashboardLayout extends React.Component {
                 borderRight: '1px solid #133153',
               }}
             >
-              <WalletTwoToneIcon />
+              <TollIcon />
             </Box>
             <Box
               sx={{
@@ -127,28 +130,17 @@ class DashboardLayout extends React.Component {
                 gap: '0.5rem',
               }}
             >
-              <Typography sx={{ fontWeight: 700 }}>{title}</Typography>
-              <InfoTwoToneIcon sx={{ color: 'lightslategray' }} />
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRight: '1px solid #133153',
-                padding: '0 1rem',
-                gap: '0.5rem',
-              }}
-            >
-              <Typography sx={{ fontWeight: 700 }}>
-                {address ? (
-                  `${address.toString().substring(0, 6)}...${address
-                    .toString()
-                    .substring(address.toString().length - 5, address.toString().length)}`
-                ) : (
-                  <Skeleton animation="wave" width={110} />
-                )}
-              </Typography>
+              {address ? (
+                <>
+                  <Typography sx={{ fontWeight: 700 }}>
+                    {address.toString().substring(0, 6)}...
+                    {address.toString().substring(address.toString().length - 5, address.toString().length)}
+                  </Typography>
+                  <ContentCopyIcon fontSize="12px" sx={{ color: 'lightslategray' }} />
+                </>
+              ) : (
+                <Skeleton animation="wave" width={130} />
+              )}
             </Box>
           </Stack>
           <Box
@@ -173,9 +165,7 @@ class DashboardLayout extends React.Component {
         </Header>
         <Nav />
         <Body>
-          <BodyWrapper>
-            {children}
-          </BodyWrapper>
+          <BodyWrapper>{children}</BodyWrapper>
         </Body>
       </Wrapper>
     )
