@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
 import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
@@ -11,12 +10,10 @@ import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import Tab from 'components/Tab'
 import Tabs from 'components/Tabs'
-import ThresholdChart from 'components/ThresholdChart'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import WalletTwoToneIcon from '@mui/icons-material/WalletTwoTone'
 import styled from '@emotion/styled'
-import type { NextPage } from 'next'
 import { Theme } from '@mui/material'
 import { getLayout as getBaseLayout } from 'layout/BaseLayout'
 import { useRouter } from 'next/router'
@@ -58,6 +55,13 @@ const Body = styled(Box)<{ theme?: Theme }>`
   display: flex;
   justify-content: center;
   width: 100%;
+`
+
+const BodyWrapper = styled(Box)`
+  display: grid;
+  width: 1700px;
+  padding: 2em;
+  margin-bottom: 4em;
 `
 
 const Nav = () => {
@@ -134,10 +138,6 @@ class DashboardLayout extends React.Component {
                 borderRight: '1px solid #133153',
                 padding: '0 1rem',
                 gap: '0.5rem',
-                '&:hover': {
-                  backgroundColor: 'rgba(51, 153, 255, 0.24)',
-                  color: 'white',
-                },
               }}
             >
               <Typography sx={{ fontWeight: 700 }}>
@@ -149,7 +149,6 @@ class DashboardLayout extends React.Component {
                   <Skeleton animation="wave" width={110} />
                 )}
               </Typography>
-              <ModeEditOutlineTwoToneIcon sx={{ color: 'lightslategray' }} />
             </Box>
           </Stack>
           <Box
@@ -173,7 +172,11 @@ class DashboardLayout extends React.Component {
           </Box>
         </Header>
         <Nav />
-        <Body>{children}</Body>
+        <Body>
+          <BodyWrapper>
+            {children}
+          </BodyWrapper>
+        </Body>
       </Wrapper>
     )
   }

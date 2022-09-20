@@ -1,10 +1,14 @@
 import React from 'react'
+const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
+import Card from 'components/Card'
+import dynamic from 'next/dynamic'
 import { getLayout } from 'layout/DashboardLayout'
 
 const TokenOverview = () => (
   <div>
-    <h1>TokenOverview</h1>
-    <p>Overview</p>
+    <Card>
+      <DataGrid />
+    </Card>
   </div>
 )
 

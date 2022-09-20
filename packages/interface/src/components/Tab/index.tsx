@@ -10,7 +10,7 @@ interface StyledTabProps {
 const StyledTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(({ theme }) => ({
   textTransform: 'none',
   fontWeight: '700',
-  fontSize: 13,
+  fontSize: '13px',
   color: 'lightslategray',
   '& .MuiTabScrollButton': {
     backgroundColor: '#fff',

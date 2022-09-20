@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import { alpha, styled } from '@mui/material/styles'
-import { DataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+import { DataGrid as MuiDataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
 
 const ODD_OPACITY = 0.2
 
@@ -67,7 +67,7 @@ const rows = [
   { id: 30, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ]
 
-const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
+const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
   border: 'none',
   '& .MuiDataGrid-columnHeaders': {
     backgroundColor: '#0c243e',
@@ -122,7 +122,7 @@ const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
   },
 }))
 
-export default function DataGridDemo() {
+function DataGrid() {
   return (
     <Box sx={{ height: '100%', width: '100%' }}>
       <StripedDataGrid
@@ -140,3 +140,5 @@ export default function DataGridDemo() {
     </Box>
   )
 }
+
+export default React.memo(DataGrid)
