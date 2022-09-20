@@ -64,6 +64,7 @@ const BodyWrapper = styled(Box)<{ theme?: Theme }>`
   width: 1700px;
   margin-bottom: 8rem;
   padding: 1rem;
+  gap: 1rem;
 `
 
 const Nav = () => {
