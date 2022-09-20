@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import { alpha, styled } from '@mui/material/styles'
 import { DataGrid as MuiDataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+import { DataGridPro } from '@mui/x-data-grid-pro';
 
 const ODD_OPACITY = 0.2
 
@@ -125,9 +126,9 @@ const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
 function DataGrid() {
   return (
     <Box sx={{ height: 800, width: '100%' }}>
-      <StripedDataGrid
+      <DataGridPro
         rows={rows}
-        loading={rows.length === 0 ? true : false}
+        loading={rows.length === 0}
         columns={columns}
         pageSize={20}
         rowsPerPageOptions={[20]}
