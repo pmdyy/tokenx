@@ -136,7 +136,6 @@ class DashboardLayout extends React.Component {
                     {address.toString().substring(0, 6)}...
                     {address.toString().substring(address.toString().length - 5, address.toString().length)}
                   </Typography>
-                  <ContentCopyIcon fontSize="12px" sx={{ color: 'lightslategray' }} />
                 </>
               ) : (
                 <Skeleton animation="wave" width={130} />

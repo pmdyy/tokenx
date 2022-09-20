@@ -127,7 +127,7 @@ function DataGrid() {
     <Box sx={{ height: 800, width: '100%' }}>
       <StripedDataGrid
         rows={rows}
-        loading={rows === 0 ? true : false}
+        loading={rows.length === 0 ? true : false}
         columns={columns}
         pageSize={20}
         rowsPerPageOptions={[20]}
