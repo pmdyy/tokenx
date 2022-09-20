@@ -12,6 +12,12 @@ const TokenOverview = () => (
     <Card>
       <DataGrid />
     </Card>
+    <Card>
+      <DataGrid />
+    </Card>
+    <Card>
+      <DataGrid />
+    </Card>
   </>
 )
 
