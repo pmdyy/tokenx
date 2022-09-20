@@ -8,6 +8,7 @@ import theme from 'assets/theme'
 import { AppProps } from 'next/app'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
+import BaseLayout from 'layout/BaseLayout'
 const ReduxProvider = dynamic(() => import('components/ReduxProvider'), { ssr: true })
 const Web3Provider = dynamic(() => import('components/Web3Provider'), { ssr: true })
 
@@ -20,13 +21,14 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+  const getLayout = (Component as any).getLayout || ((page) => <BaseLayout>{page}</BaseLayout>)
   return (
     <ReduxProvider>
       <Web3Provider>
         <CacheProvider value={emotionCache}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
           </ThemeProvider>
         </CacheProvider>
       </Web3Provider>

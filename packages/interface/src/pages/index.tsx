@@ -1,14 +1,16 @@
 import * as React from 'react'
 import type { NextPage } from 'next'
 import { Container, Typography, Stack, Button } from '@mui/material'
-import Layout from '../layout'
+import { getLayout as getBaseLayout, IBaseLayout } from 'layout/BaseLayout'
 
-const Home: NextPage = () => {
+const Index: NextPage & IBaseLayout = () => {
   return (
-    <Layout>
-      <Container maxWidth="lg" sx={{ marginTop: { xs: 5, md: 10 } }}></Container>
-    </Layout>
+    <Container maxWidth="lg" sx={{ marginTop: { xs: 5, md: 10 } }}>
+      <p>HomePage</p>
+    </Container>
   )
 }
 
-export default Home
+Index.getLayout = getBaseLayout
+
+export default Index

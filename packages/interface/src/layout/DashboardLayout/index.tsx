@@ -1,19 +1,12 @@
-import React, { useEffect, useState, useRef, useLayoutEffect } from 'react'
-import '../../../node_modules/react-grid-layout/css/styles.css'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Card from 'components/Card'
-import Container from '@mui/material/Container'
-import IconButton from '@mui/material/IconButton'
-import InfoIcon from '@mui/icons-material/Info'
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
-import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
-import Layout from 'layout'
-import MenuOpenTwoToneIcon from '@mui/icons-material/MenuOpenTwoTone'
-import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone'
-import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
+import React from 'react'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
+import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
+import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
+import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
 import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import Tab from 'components/Tab'
@@ -24,11 +17,12 @@ import Typography from '@mui/material/Typography'
 import WalletTwoToneIcon from '@mui/icons-material/WalletTwoTone'
 import styled from '@emotion/styled'
 import type { NextPage } from 'next'
-import { Responsive } from 'react-grid-layout'
 import { Theme } from '@mui/material'
+import { getLayout as getBaseLayout } from 'layout/BaseLayout'
 import { useRouter } from 'next/router'
+import DashboardProvider, { Context as DashboardContext } from 'providers/DashboardProvider'
 
-const V1LayoutWrapper = styled.div<{ theme?: Theme }>`
+const Wrapper = styled.div<{ theme?: Theme }>`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -53,20 +47,21 @@ const V1LayoutWrapper = styled.div<{ theme?: Theme }>`
   }
 `
 
-const V1LayoutHeader = styled(Box)<{ theme?: Theme }>`
+const Header = styled(Box)<{ theme?: Theme }>`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightBlue};
 `
 
-const V1LayoutBody = styled(Box)<{ theme?: Theme }>`
+const Body = styled(Box)<{ theme?: Theme }>`
   display: flex;
   justify-content: center;
   width: 100%;
 `
 
-function V1LayoutNav() {
+const Nav = () => {
+  const router = useRouter()
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -83,24 +78,28 @@ function V1LayoutNav() {
         allowScrollButtonsMobile
         aria-label="scrollable force tabs"
       >
-        <Tab label="Overview" />
-        <Tab label="Counterparts" />
-        <Tab label="NFTs" />
+        <Tab label="Overview" onClick={() => router.push('/token/0x132784537')} />
+        <Tab label="Scavenger" onClick={() => router.push('/token/0x132784537/scavenger')} />
       </Tabs>
     </Box>
   )
 }
 
-export default function V1Layout({ title, address, children }) {
-  const [currentBreakpoint, setCurrentBreakpoint] = React.useState('lg')
-  const [mounted, setMounted] = React.useState(false)
-  const [layouts, setLayouts] = React.useState({
-    lg: [{ i: '0', x: 0, y: 0, w: 3, h: 12, static: false }],
-  })
-  return (
-    <Layout>
-      <V1LayoutWrapper>
-        <V1LayoutHeader>
+export interface DashboardProps {
+  children?: React.ReactNode
+}
+
+class DashboardLayout extends React.Component {
+  static contextTypes: DashboardContext = {
+    title: (PropTypes as any).string,
+    address: (PropTypes as any).string || undefined,
+  }
+  render() {
+    const { title, address } = this.context as DashboardContext
+    const { children } = this.props as DashboardProps
+    return (
+      <Wrapper>
+        <Header>
           <Stack direction="row">
             <Box
               sx={{
@@ -172,10 +171,20 @@ export default function V1Layout({ title, address, children }) {
               </IconButton>
             </Tooltip>
           </Box>
-        </V1LayoutHeader>
-        <V1LayoutNav />
-        <V1LayoutBody>{children}</V1LayoutBody>
-      </V1LayoutWrapper>
-    </Layout>
+        </Header>
+        <Nav />
+        <Body>{children}</Body>
+      </Wrapper>
+    )
+  }
+}
+
+export const getLayout = (page, props) => {
+  return getBaseLayout(
+    <DashboardProvider>
+      <DashboardLayout>{page}</DashboardLayout>
+    </DashboardProvider>
   )
 }
+
+export default DashboardLayout

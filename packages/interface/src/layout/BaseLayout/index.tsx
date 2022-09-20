@@ -1,16 +1,19 @@
 import React, { ReactNode, useState } from 'react'
-import { Theme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import Stack from '@mui/material/Stack'
-import { CSSTransition } from 'react-transition-group'
-import styled from '@emotion/styled'
-import Header from 'components/Header'
 import CollapsibleSidebar from 'components/Sidebar'
-import Drawer from '../components/Drawer'
+import Container from '@mui/material/Container'
+import Header from 'components/Header'
+import Stack from '@mui/material/Stack'
+import styled from '@emotion/styled'
+import { CSSTransition } from 'react-transition-group'
+import { Theme } from '@mui/material/styles'
 
 interface Props {
   children: ReactNode
+}
+
+export interface IBaseLayout {
+  getLayout: (page: React.ReactNode) => React.ReactNode
 }
 
 const Wrap = styled(Box)<{ theme?: Theme }>`
@@ -29,7 +32,7 @@ const Wrap = styled(Box)<{ theme?: Theme }>`
   }
 `
 
-function Layout({ children }: Props) {
+const BaseLayout = ({ children }: Props) => {
   return (
     <Wrap>
       <Header />
@@ -38,4 +41,6 @@ function Layout({ children }: Props) {
   )
 }
 
-export default Layout
+export const getLayout = (page) => <BaseLayout>{page}</BaseLayout>
+
+export default BaseLayout

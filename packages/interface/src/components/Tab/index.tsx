@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab'
 
 interface StyledTabProps {
   label: string
+  onClick: () => void
 }
 
 const StyledTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(({ theme }) => ({
