@@ -9,9 +9,11 @@ const DataGrid = dynamic(() => import('components/DataGrid'), {
 
 const TokenOverview = () => (
   <>
-    <Card>
-        <DataGrid />
-    </Card>
+      {[...Array(20)].map((_, i) => (
+        <Card key={i}>
+          <DataGrid key={i} />
+        </Card>
+      ))}
   </>
 )
 

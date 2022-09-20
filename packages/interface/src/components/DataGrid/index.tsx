@@ -1,5 +1,4 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
 import Box from '@mui/material/Box'
 import { alpha, styled } from '@mui/material/styles'
 import { DataGrid as MuiDataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
@@ -125,7 +124,7 @@ const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
 
 function DataGrid() {
   return (
-    <Box sx={{ height: 800, width: '100%' }}>
+    <Box sx={{ height: '760px', width: '100%' }}>
       <StripedDataGrid
         rows={rows}
         columns={columns}
@@ -135,6 +134,7 @@ function DataGrid() {
         disableSelectionOnClick
         density={'compact'}
         getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
+        hideFooter={true}
       />
     </Box>
   )
