@@ -1,6 +1,7 @@
 const path = require('path')
 const loaderUtils = require('loader-utils')
 const withFonts = require('next-fonts')
+const withPreact = require('next-plugin-preact');
 
 const hashOnlyIdent = (context, _, exportName) =>
   loaderUtils
@@ -20,9 +21,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withBundleAnalyzer(
+module.exports = withPreact(
   withFonts({
-    webpack(config, { dev }) {
+    webpack(config, { dev, isServer }) {
       const rules = config.module.rules
         .find((rule) => typeof rule.oneOf === 'object')
         .oneOf.filter((rule) => Array.isArray(rule.use))
