@@ -21,7 +21,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withwithBundleAnalyzer(
+module.exports = withBundleAnalyzer(
   withPreact(
   withFonts({
     webpack(config, { dev }) {
