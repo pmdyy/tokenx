@@ -21,7 +21,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withFonts({
+module.exports = withPreact(
+  withFonts({
     webpack(config, { dev, isServer }) {
       const rules = config.module.rules
         .find((rule) => typeof rule.oneOf === 'object')
@@ -39,3 +40,4 @@ module.exports = withFonts({
     },
     optimizeFonts: true,
   })
+)
