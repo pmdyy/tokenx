@@ -1,7 +1,7 @@
 const path = require('path')
 const loaderUtils = require('loader-utils')
 const withFonts = require('next-fonts')
-const withPreact = require('next-plugin-preact')
+// const withPreact = require('next-plugin-preact')
 
 const hashOnlyIdent = (context, _, exportName) =>
   loaderUtils
@@ -21,8 +21,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-module.exports = withPreact(
-  withFonts({
+module.exports = withFonts({
     webpack(config, { dev, isServer }) {
       const rules = config.module.rules
         .find((rule) => typeof rule.oneOf === 'object')
@@ -41,4 +40,3 @@ module.exports = withPreact(
     },
     optimizeFonts: true,
   })
-)
