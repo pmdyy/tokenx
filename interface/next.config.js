@@ -22,22 +22,4 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withPreact(
-  withFonts({
-    webpack(config, { dev, isServer }) {
-      const rules = config.module.rules
-        .find((rule) => typeof rule.oneOf === 'object')
-        .oneOf.filter((rule) => Array.isArray(rule.use))
-
-      if (!dev)
-        rules.forEach((rule) => {
-          rule.use.forEach((moduleLoader) => {
-            if (moduleLoader.loader?.includes('css-loader') && !moduleLoader.loader?.includes('postcss-loader'))
-              moduleLoader.options.modules.getLocalIdent = hashOnlyIdent
-          })
-        })
-
-      return config
-    },
-    optimizeFonts: true,
-  })
 )
