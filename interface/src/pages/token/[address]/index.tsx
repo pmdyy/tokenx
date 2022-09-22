@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import Card from 'components/Card'
 import dynamic from 'next/dynamic'
 import { getLayout } from 'layout/DashboardLayout'
+import Card from 'stories/Card'
 const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
 
 const TokenOverview = () => (
