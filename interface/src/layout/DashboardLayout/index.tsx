@@ -171,7 +171,7 @@ class DashboardLayout extends React.Component {
   }
 }
 
-export const getLayout = (page, props) => {
+export const getLayout = (page, props?) => {
   return getBaseLayout(
     <DashboardProvider>
       <DashboardLayout>{page}</DashboardLayout>

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import Box from '@mui/material/Box'
-import Theme from '@mui/material/Theme'
+import { Theme } from '@mui/material/styles'
 
 export const HeaderContainer = styled(Box)<{ theme?: Theme }>`
   height: 60px;
