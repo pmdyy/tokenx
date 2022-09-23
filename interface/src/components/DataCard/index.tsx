@@ -76,7 +76,7 @@ function DataCard({ title, ...props }) {
         <Table size="small">
           <TableBody data-grid="wow">
             {data.map((row, index) => (
-              <TableRow>
+              <TableRow key={index}>
                 <TableCell>
                   <Typography variant="body2" sx={{ color: 'lightslategray' }}>
                     {row.column}
