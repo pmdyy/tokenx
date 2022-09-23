@@ -295,7 +295,7 @@ export default function WalletModal() {
 
   return (
     <Box>
-      <Button sx={{ textTransform: 'capitalize' }} variant="outlined" onClick={() => setOpen(true)}>
+      <Button variant="primary" sx={{ textTransform: 'capitalize' }} variant="outlined" onClick={() => setOpen(true)}>
         {isActive ? shortenAddress(account) : 'Connect Wallet'}
       </Button>
       <Modal

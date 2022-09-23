@@ -27,7 +27,7 @@ export default function MyApp(props: MyAppProps) {
       <Web3Provider>
         <CacheProvider value={emotionCache}>
           <ThemeProvider theme={theme}>
-            <CssBaseline />
+            <CssBaseline enableColorScheme />
             {getLayout(<Component {...pageProps} />)}
           </ThemeProvider>
         </CacheProvider>
