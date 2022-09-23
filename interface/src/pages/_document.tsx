@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="theme-color" content={theme.colors.darkBlue} />
+          <meta name="theme-color" content={theme.palette.background.default} />
           <meta name="viewport" content="initial-scale=1, width=device-width" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
