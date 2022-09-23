@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import Card from 'components/Card'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
+import Theme from '@mui/material/Theme'
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 
