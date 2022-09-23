@@ -24,14 +24,22 @@ function DataCard({ title, ...props }) {
       <Card.Body padding={1}>
         <DataRow>
           <Stack direction="row" justifyContent="space-between">
-            <Typography variant="body1">Balance</Typography>
-            <Typography variant="body1">111.44051 Ether</Typography>
+            <Typography variant="body2" sx={{ color: 'lightgray' }}>
+              Balance
+            </Typography>
+            <Typography variant="body2" sx={{ fontWeight: 500 }}>
+              111.44051 Ether
+            </Typography>
           </Stack>
         </DataRow>
         <DataRow>
           <Stack direction="row" justifyContent="space-between">
-            <Typography variant="body1">Contract Creator:</Typography>
-            <Typography variant="body1">0xdb65702a...</Typography>
+            <Typography variant="body2" sx={{ color: 'lightgray' }}>
+              Contract Creator:
+            </Typography>
+            <Typography variant="body2" sx={{ fontWeight: 500 }}>
+              0xdb65702a...
+            </Typography>
           </Stack>
         </DataRow>
       </Card.Body>
