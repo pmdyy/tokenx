@@ -123,7 +123,7 @@ const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
   },
 }))
 
-function DataGrid() {
+function DataGrid({ ...props }) {
   return (
     <Card>
       <Card.Header title={'Ether Flow Activity'} tooltip={'Tooltip text'} />
@@ -139,6 +139,7 @@ function DataGrid() {
             density={'compact'}
             getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
             hideFooter={true}
+            {...props}
           />
         </Box>
       </Card.Body>

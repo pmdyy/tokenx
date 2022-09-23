@@ -7,15 +7,13 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 
 export interface CardFooterProps {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const CardFooter = ({ children, ...props }: CardFooterProps) => {
   return (
     <MuiCardActions disableSpacing>
-      <IconButton color="neutral" aria-label="add to favorites">
-        <ExpandMoreIcon />
-      </IconButton>
+      {children}
     </MuiCardActions>
   )
 }

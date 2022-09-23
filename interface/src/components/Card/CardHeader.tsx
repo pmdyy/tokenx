@@ -10,7 +10,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 export interface CardHeaderProps {
   title: string
   tooltip?: React.ReactNode
-  fontSize?: number
+  fontSize?: number | string
   tooltipFontSize?: number
   iconColor?: string
 }

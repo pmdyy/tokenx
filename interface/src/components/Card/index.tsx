@@ -5,8 +5,8 @@ import CardBody from './CardBody'
 import CardFooter from './CardFooter'
 
 export interface Card {
-  color: string
-  backgroundColor: string
+  color?: string
+  backgroundColor?: string
   children: React.ReactNode
 }
 
@@ -29,8 +29,6 @@ const Card = ({ color, backgroundColor, children, ...props }: Card) => {
     </MuiCard>
   )
 }
-
-Card.displayName = 'Card'
 
 export default Object.assign(Card, {
   Header: CardHeader,

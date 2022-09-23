@@ -3,12 +3,12 @@ import MuiCardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-export interface CardBody {
+export interface CardBodyProps {
   padding?: number
   children: React.ReactNode
 }
 
-const CardBody = ({ padding = 0, children, ...props }: CardHeader) => {
+const CardBody = ({ padding = 0, children, ...props }: CardBodyProps) => {
   return (
     <MuiCardContent
       sx={{
