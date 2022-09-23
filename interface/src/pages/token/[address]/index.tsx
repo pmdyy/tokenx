@@ -4,14 +4,23 @@ import dynamic from 'next/dynamic'
 import { getLayout } from 'layout/DashboardLayout'
 const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
 
-const TokenOverview = () => (
-  <>
-    {[...Array(1)].map((_, i) => (
-      <DataGrid key={i} loading={true} />
-    ))}
-  </>
-)
+const TokenOverview = () => {
+  return (
+    <>
+      {[...Array(2)].map((_, i) => (
+        <DataGrid key={i} title={'Ether Flow Activity'} loading={false} />
+      ))}
+    </>
+  )
+}
 
-TokenOverview.getLayout = (page) => getLayout(page, { title: 'Token', address: '0x123' })
+TokenOverview.getInitialProps = async ({ query }) => {
+  const { address } = query
+  return {
+    address: address,
+  }
+}
+
+TokenOverview.getLayout = (page) => getLayout(page)
 
 export default TokenOverview

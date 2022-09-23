@@ -123,10 +123,10 @@ const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
   },
 }))
 
-function DataGrid({ ...props }) {
+function DataGrid({ title, ...props }) {
   return (
     <Card>
-      <Card.Header title={'Ether Flow Activity'} tooltip={'Tooltip text'} />
+      <Card.Header title={title} tooltip={'Tooltip text'} />
       <Card.Body>
         <Box sx={{ height: '760px', width: '100%' }}>
           <StripedDataGrid
