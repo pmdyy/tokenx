@@ -14,9 +14,16 @@ const theme = createTheme({
       contrastText: 'rgba(0,0,0,0.87)',
       border: '#133153',
     },
+    neutral: {
+      main: '#778899',
+    },
     background: {
       paper: '#0b1d32',
       default: '#081422',
+    },
+    text: {
+      primary: '#fff',
+      icon: '#778899',
     },
   },
   typography: {

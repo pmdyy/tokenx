@@ -13,14 +13,8 @@ export interface CardFooterProps {
 const CardFooter = ({ children, ...props }: CardFooterProps) => {
   return (
     <MuiCardActions disableSpacing>
-      <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-      </IconButton>
-      <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-      </IconButton>
-      <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
+      <IconButton color="neutral" aria-label="add to favorites">
+        <ExpandMoreIcon />
       </IconButton>
     </MuiCardActions>
   )

@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from 'components/Card'
 import Box from '@mui/material/Box'
 import { alpha, styled } from '@mui/material/styles'
 import { DataGrid as MuiDataGrid, gridClasses, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
@@ -124,19 +125,25 @@ const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
 
 function DataGrid() {
   return (
-    <Box sx={{ height: '760px', width: '100%' }}>
-      <StripedDataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={20}
-        rowsPerPageOptions={[20]}
-        checkboxSelection
-        disableSelectionOnClick
-        density={'compact'}
-        getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
-        hideFooter={true}
-      />
-    </Box>
+    <Card>
+      <Card.Header title={'Ether Flow Activity'} tooltip={'Tooltip text'} />
+      <Card.Body>
+        <Box sx={{ height: '760px', width: '100%' }}>
+          <StripedDataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={20}
+            rowsPerPageOptions={[20]}
+            checkboxSelection
+            disableSelectionOnClick
+            density={'compact'}
+            getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
+            hideFooter={true}
+          />
+        </Box>
+      </Card.Body>
+      <Card.Footer />
+    </Card>
   )
 }
 
