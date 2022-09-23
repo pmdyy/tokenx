@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Card from 'components/Card'
 import Stack from '@mui/material/Stack'
+import { faker } from '@faker-js/faker'
 import Box from '@mui/material/Box'
 import { Theme } from '@mui/material/styles'
 import Divider from '@mui/material/Divider'
@@ -16,35 +17,41 @@ export const DataRow = styled(Box)<{ theme?: Theme }>`
   &:first-child {
     padding-top: 0px;
   }
+  &:last-child {
+    border-bottom: 0;
+  }
 `
+
+const data = Array.from({ length: 5 }, () => ({
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  address: faker.address.streetAddress(),
+  city: faker.address.city(),
+  state: faker.address.state(),
+  zip: faker.address.zipCode(),
+  country: faker.address.country(),
+  phone: faker.phone.phoneNumber(),
+  avatar: faker.internet.avatar(),
+}))
 
 function DataCard({ title, ...props }) {
   return (
     <Card>
       <Card.Header title={title} />
       <Card.Body padding={1}>
-        <DataRow>
-          <Stack direction="row" justifyContent="space-between">
-            <Typography variant="body2" sx={{ color: 'lightgray' }}>
-              Balance
-            </Typography>
-            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-              111.44051 Ether
-            </Typography>
-          </Stack>
-        </DataRow>
-        <DataRow>
-          <Stack direction="row" justifyContent="space-between">
-            <Typography variant="body2" sx={{ color: 'lightgray' }}>
-              Contract Creator:
-            </Typography>
-            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-              0xdb65702a...
-            </Typography>
-          </Stack>
-        </DataRow>
+        {data.map((data, index) => (
+          <DataRow key={index}>
+            <Stack direction="row" justifyContent="space-between">
+              <Typography variant="body2" sx={{ color: 'lightgray' }}>
+                {data.name}
+              </Typography>
+              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                {data.email}
+              </Typography>
+            </Stack>
+          </DataRow>
+        ))}
       </Card.Body>
-      <Card.Footer />
     </Card>
   )
 }
