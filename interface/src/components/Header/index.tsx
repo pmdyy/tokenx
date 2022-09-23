@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Link, { LinkProps } from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu'
+import Chip from '@mui/material/Chip'
 import DragHandleIcon from '@mui/icons-material/DragHandle'
 import dynamic from 'next/dynamic'
 import styled from '@emotion/styled'
@@ -109,6 +110,7 @@ function Header() {
           <Logo>
             {/*<LogoImage src={`./orthanc.png`} />*/}
             {`TokenX`}
+            <Chip label="Beta" size="small" color="primary" />
           </Logo>
         </Link>
       </HeaderLeft>

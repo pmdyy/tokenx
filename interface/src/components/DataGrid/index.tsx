@@ -143,7 +143,6 @@ function DataGrid({ title, ...props }) {
           />
         </Box>
       </Card.Body>
-      <Card.Footer />
     </Card>
   )
 }

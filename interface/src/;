@@ -1,0 +1,70 @@
+import React from 'react'
+import styled from '@emotion/styled'
+import Card from 'components/Card'
+import Stack from '@mui/material/Stack'
+import { faker } from '@faker-js/faker'
+import Box from '@mui/material/Box'
+import { Theme } from '@mui/material/styles'
+import Divider from '@mui/material/Divider'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableRow from '@mui/material/TableRow'
+import MuiTableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import Typography from '@mui/material/Typography'
+
+export const DataRow = styled(Box)<{ theme?: Theme }>`
+  padding-top: 1rem;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid ${({ theme }) => theme.palette.border.main};
+  &:first-child {
+    padding-top: 0px;
+  }
+  &:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+`
+
+export const TableCell = styled(MuiTableCell)<{ theme?: Theme }>`
+  border-bottom: 1px solid ${({ theme }) => theme.palette.border.main};
+`
+
+const data = [
+  { name: 'mike' },
+  { name: 'mike' },
+  { name: 'mike' },
+  { name: 'mike' },
+]
+
+function DataCard({ title, ...props }) {
+  return (
+    <Card>
+      <Card.Header title={title} />
+      <Card.Body padding={1}>
+        <Table>
+          <TableBody>
+            {data.map((data, index) => (
+              <TableRow>
+                <TableCell>
+                  <Typography variant="body2" sx={{ color: 'lightgray' }}>
+                    Ether Balance
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                    1371.1231 Ether
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Card.Body>
+    </Card>
+  )
+}
+
+export default DataCard

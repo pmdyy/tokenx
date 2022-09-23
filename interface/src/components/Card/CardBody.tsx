@@ -12,9 +12,13 @@ const CardBody = ({ padding = 0, children, ...props }: CardBodyProps) => {
   return (
     <MuiCardContent
       sx={{
-        padding: `${padding}em !important`,
+        padding: `${padding}em`,
         height: '100%',
+        '&:last-child': {
+          padding: 0,
+        },
       }}
+      {...props}
     >
       {children}
     </MuiCardContent>
