@@ -1,15 +1,14 @@
 import React, { Suspense } from 'react'
-import Card from 'components/Card'
 import dynamic from 'next/dynamic'
 import { getLayout } from 'layout/DashboardLayout'
+const DataCard = dynamic(() => import('components/DataCard'), { ssr: true })
 const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
 
 const TokenOverview = () => {
   return (
     <>
-      {[...Array(2)].map((_, i) => (
-        <DataGrid key={i} title={'Ether Flow Activity'} loading={false} />
-      ))}
+      <DataCard title={'Overview'} />
+      <DataGrid title={'Ether Flow Activity'} loading={false} />
     </>
   )
 }
