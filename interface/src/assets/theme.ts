@@ -35,10 +35,14 @@ const theme = createTheme({
 })
 
 declare module '@mui/material/styles' {
-  interface TypeBackground {
+  export interface TypeBackground {
     default: string
     paper: string
     paper2: string
+    text: TypeText
+    action: TypeAction
+    divider: TypeDivider
+    background: TypeBackground
   }
   interface Theme {
     colors: ColorsInterface
