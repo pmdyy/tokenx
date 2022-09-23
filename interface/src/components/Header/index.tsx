@@ -34,7 +34,7 @@ export const HeaderContainer = styled(Box)<{ theme?: Theme }>`
   justify-content: space-between;
   grid-area: header / header / header / header;
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightBlue};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.primary.border};
 `
 
 export const Logo = styled.div`

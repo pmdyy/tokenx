@@ -22,13 +22,13 @@ const Wrap = styled(Box)<{ theme?: Theme }>`
   grid-template-columns: min-content 1fr;
   height: 100vh;
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.darkBlue};
+  background: theme.palette.background.default;
   color: white;
 
   a {
     font-size: 1em;
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.white};
+    color: theme.palette.common.white;
   }
 `
 
