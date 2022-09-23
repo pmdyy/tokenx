@@ -10,17 +10,13 @@ const TokenOverview = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={4}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <DataCard title={'Overview'} />
-            </Grid>
-            <Grid item xs={12}>
-              <DataCard title={'Holder Stats'} />
-            </Grid>
-          </Grid>
+        <Grid item xs={6}>
+          <DataCard title={'Overview'} />
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={6}>
+          <DataCard title={'Holder Stats'} />
+        </Grid>
+        <Grid item xs={12} md={12}>
           <DataGrid title={'Cheap Skates'} loading={false} />
         </Grid>
         <Grid item xs={12} md={12}>

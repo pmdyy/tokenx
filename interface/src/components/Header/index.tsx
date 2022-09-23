@@ -1,10 +1,11 @@
 import React, { useEffect, useState, ReactNode } from 'react'
 const WalletModal = dynamic(() => import('components/WalletModal'), { ssr: false })
+const Chip = dynamic(() => import('@mui/material/Chip'), { ssr: true })
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Link, { LinkProps } from 'next/link'
 import MenuIcon from '@mui/icons-material/Menu'
-import Chip from '@mui/material/Chip'
+// import Chip from '@mui/material/Chip'
 import DragHandleIcon from '@mui/icons-material/DragHandle'
 import dynamic from 'next/dynamic'
 import styled from '@emotion/styled'
