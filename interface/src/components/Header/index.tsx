@@ -112,7 +112,7 @@ function Header() {
           <Logo>
             {/*<LogoImage src={`./orthanc.png`} />*/}
             {`ChainBrain`}
-            <Chip size="small" label="Beta" color="primary" variant="outlined" />
+            {/*<Chip size="small" label="Beta" color="primary" variant="outlined" />*/}
           </Logo>
         </Link>
       </HeaderLeft>

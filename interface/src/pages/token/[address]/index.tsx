@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { getLayout } from 'layout/DashboardLayout'
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
+const Box = dynamic(() => import('@mui/material/Box'), { ssr: true })
+const Grid = dynamic(() => import('@mui/material/Grid'), { ssr: true })
 const DataCard = dynamic(() => import('components/DataCard'), { ssr: true })
 const DataGrid = dynamic(() => import('components/DataGrid'), { ssr: true })
 
