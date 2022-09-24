@@ -10,8 +10,6 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
-import Tab from 'components/Tab'
-import Tabs from 'components/Tabs'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import WalletTwoToneIcon from '@mui/icons-material/WalletTwoTone'
@@ -22,6 +20,7 @@ import { useRouter } from 'next/router'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DashboardProvider, { Context as DashboardContext } from 'providers/DashboardProvider'
 const Nav = dynamic(() => import('./Nav'), { ssr: true })
+const Header = dynamic(() => import('./Header'), { ssr: true })
 
 const Wrapper = styled.div<{ theme?: Theme }>`
   display: flex;
@@ -48,13 +47,6 @@ const Wrapper = styled.div<{ theme?: Theme }>`
   }
 `
 
-const Header = styled(Box)<{ theme?: Theme }>`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightBlue};
-`
-
 const Body = styled(Box)<{ theme?: Theme }>`
   display: flex;
   justify-content: center;
@@ -68,31 +60,6 @@ const BodyWrapper = styled(Box)<{ theme?: Theme }>`
   padding: 1rem;
   gap: 1rem;
 `
-
-// const Nav = () => {
-//   const router = useRouter()
-//   const [value, setValue] = React.useState(0)
-
-//   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-//     setValue(newValue)
-//   }
-
-//   return (
-//     <Box>
-//       <Tabs
-//         value={value}
-//         onChange={handleChange}
-//         variant="scrollable"
-//         scrollButtons
-//         allowScrollButtonsMobile
-//         aria-label="scrollable force tabs"
-//       >
-//         <Tab label="Overview" onClick={() => router.push('/token/0x132784537')} />
-//         <Tab label="Scavenger" onClick={() => router.push('/token/0x132784537/scavenger')} />
-//       </Tabs>
-//     </Box>
-//   )
-// }
 
 export interface DashboardProps {
   children?: React.ReactNode
@@ -108,62 +75,7 @@ class DashboardLayout extends React.Component {
     const { children } = this.props as DashboardProps
     return (
       <Wrapper>
-        <Header>
-          <Stack direction="row">
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 64,
-                height: 64,
-                borderRight: '1px solid #133153',
-              }}
-            >
-              <TollIcon />
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRight: '1px solid #133153',
-                padding: '0 1rem',
-                gap: '0.5rem',
-              }}
-            >
-              {address ? (
-                <>
-                  <Typography sx={{ fontWeight: 700 }}>
-                    {address.toString().substring(0, 6)}...
-                    {address.toString().substring(address.toString().length - 5, address.toString().length)}
-                  </Typography>
-                </>
-              ) : (
-                <Skeleton animation="wave" width={130} />
-              )}
-            </Box>
-          </Stack>
-          <Box
-            px={2}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Tooltip title="Refresh" placement="bottom" arrow>
-              <IconButton>
-                <RefreshTwoToneIcon sx={{ color: 'lightslategray' }} />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Configure" placement="bottom" arrow>
-              <IconButton>
-                <SettingsTwoToneIcon sx={{ color: 'lightslategray' }} />
-              </IconButton>
-            </Tooltip>
-          </Box>
-        </Header>
+        <Header address={address} />
         <Nav />
         <Body>
           <BodyWrapper>{children}</BodyWrapper>
