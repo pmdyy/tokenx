@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ReactNode } from 'react'
-const WalletModal = dynamic(() => import('components/WalletModal'), { ssr: false })
+// const WalletModal = dynamic(() => import('components/WalletModal'), { ssr: true })
+import WalletModal from 'components/WalletModal'
 const Chip = dynamic(() => import('@mui/material/Chip'), { ssr: true })
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'

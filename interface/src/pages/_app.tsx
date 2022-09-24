@@ -9,7 +9,8 @@ import { AppProps } from 'next/app'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import BaseLayout from 'layout/BaseLayout'
-const ReduxProvider = dynamic(() => import('components/ReduxProvider'), { ssr: true })
+// const ReduxProvider = dynamic(() => import('components/ReduxProvider'), { ssr: true })
+import ReduxProvider from 'components/ReduxProvider'
 const Web3Provider = dynamic(() => import('components/Web3Provider'), { ssr: true })
 
 // Client-side cache, shared for the whole session of the user in the browser.
