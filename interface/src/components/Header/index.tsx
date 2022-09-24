@@ -39,13 +39,14 @@ export const HeaderContainer = styled(Box)<{ theme?: Theme }>`
   border-bottom: 1px solid ${({ theme }) => theme.palette.border.main};
 `
 
-export const Logo = styled.div`
+export const Logo = styled.a`
   display: flex;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.3rem !important;
   font-weight: bolder;
   padding: 0 1rem;
   gap: 10px;
+  cursor: pointer;
 `
 
 export const LogoImage = styled.img`
@@ -110,8 +111,8 @@ function Header() {
         <Link href="/">
           <Logo>
             {/*<LogoImage src={`./orthanc.png`} />*/}
-            {`TokenX`}
-            <Chip label="Beta" size="small" color="primary" />
+            {`ChainBrain`}
+            <Chip size="small" label="Beta" color="primary" variant="outlined" />
           </Logo>
         </Link>
       </HeaderLeft>
