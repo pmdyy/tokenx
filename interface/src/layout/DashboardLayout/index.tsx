@@ -1,4 +1,5 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import PropTypes from 'prop-types'
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
@@ -20,6 +21,7 @@ import { getLayout as getBaseLayout } from 'layout/BaseLayout'
 import { useRouter } from 'next/router'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DashboardProvider, { Context as DashboardContext } from 'providers/DashboardProvider'
+const Nav = dynamic(() => import('./Nav'), { ssr: true })
 
 const Wrapper = styled.div<{ theme?: Theme }>`
   display: flex;
@@ -67,30 +69,30 @@ const BodyWrapper = styled(Box)<{ theme?: Theme }>`
   gap: 1rem;
 `
 
-const Nav = () => {
-  const router = useRouter()
-  const [value, setValue] = React.useState(0)
+// const Nav = () => {
+//   const router = useRouter()
+//   const [value, setValue] = React.useState(0)
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
-  }
+//   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+//     setValue(newValue)
+//   }
 
-  return (
-    <Box>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons
-        allowScrollButtonsMobile
-        aria-label="scrollable force tabs"
-      >
-        <Tab label="Overview" onClick={() => router.push('/token/0x132784537')} />
-        <Tab label="Scavenger" onClick={() => router.push('/token/0x132784537/scavenger')} />
-      </Tabs>
-    </Box>
-  )
-}
+//   return (
+//     <Box>
+//       <Tabs
+//         value={value}
+//         onChange={handleChange}
+//         variant="scrollable"
+//         scrollButtons
+//         allowScrollButtonsMobile
+//         aria-label="scrollable force tabs"
+//       >
+//         <Tab label="Overview" onClick={() => router.push('/token/0x132784537')} />
+//         <Tab label="Scavenger" onClick={() => router.push('/token/0x132784537/scavenger')} />
+//       </Tabs>
+//     </Box>
+//   )
+// }
 
 export interface DashboardProps {
   children?: React.ReactNode
