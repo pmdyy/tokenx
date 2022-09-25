@@ -7,7 +7,15 @@ import { DataGrid as MuiDataGrid, gridClasses, GridColDef, GridValueGetterParams
 const ODD_OPACITY = 0.2
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'image',
+    headerName: '',
+    width: 58,
+    pinnable: true,
+    align: 'center',
+    renderCell: (params) => <img width={24} src={params.value} />,
+  },
+  { field: 'id', headerName: 'ID', width: 50 },
   {
     field: 'firstName',
     headerName: 'First name',
@@ -23,6 +31,7 @@ const columns: GridColDef[] = [
     field: 'age',
     headerName: 'Age',
     type: 'number',
+    flex: 1,
     width: 110,
   },
   {
@@ -35,18 +44,16 @@ const columns: GridColDef[] = [
   },
 ]
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 8 },
-  { id: 6, lastName: 'Melisandre', firstName: 'Ary', age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  { id: 10, lastName: 'Snow', firstName: 'Jon', age: 35 },
-]
+const rows = []
+for (let i = 0; i < 10; i++) {
+  rows.push({
+    id: i,
+    image: `https://img.x2y2.io/v2/1/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${i + 1}/280/image.jpg`,
+    lastName: 'Snow',
+    firstName: 'Jon',
+    age: 35,
+  })
+}
 
 const StripedDataGrid = styled(MuiDataGrid)(({ theme }) => ({
   border: 'none',
@@ -114,7 +121,6 @@ function DataGrid({ title, ...props }) {
             columns={columns}
             pageSize={20}
             rowsPerPageOptions={[20]}
-            checkboxSelection
             disableSelectionOnClick
             density={'compact'}
             getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
