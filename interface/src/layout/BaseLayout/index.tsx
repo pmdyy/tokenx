@@ -20,13 +20,7 @@ export interface IBaseLayout {
 }
 
 const Wrap = styled(Box)<{ theme?: Theme }>`
-  display: grid;
-  grid-template-areas: 'header header' 'content content';
-  grid-template-columns: min-content 1fr;
-  height: 100vh;
-  overflow: hidden;
   background: theme.palette.background.default;
-  color: white;
 
   a {
     font-size: 1em;
@@ -37,10 +31,14 @@ const Wrap = styled(Box)<{ theme?: Theme }>`
 
 const BaseLayout = ({ children }: Props) => {
   return (
-    <Wrap>
+    <React.Fragment>
       <Header />
-      {children}
-    </Wrap>
+      <Container disableGutters>
+        <Box>
+          {children}
+        </Box>
+      </Container>
+    </React.Fragment>
   )
 }
 
