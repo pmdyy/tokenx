@@ -45,15 +45,18 @@ export default function ElevateAppBar(props: Props) {
   return (
     <React.Fragment>
       <ElevationScroll {...props}>
-        <AppBar>
-          <Toolbar variant='dense'>
-            <Typography variant="h6" component="div">
-              Scroll to elevate App bar
+        <AppBar sx={{ backgroundColor: '#081422' }} elevation={0}>
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
+              TokenX
             </Typography>
+            <Box>
+              <WalletModal />
+            </Box>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <Toolbar variant='dense'/>
+      <Toolbar />
     </React.Fragment>
   )
 }

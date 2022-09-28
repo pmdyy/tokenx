@@ -17,10 +17,7 @@ const Nav = () => {
       <Tabs
         value={value}
         onChange={handleChange}
-        variant="scrollable"
-        scrollButtons
-        allowScrollButtonsMobile
-        aria-label="scrollable force tabs"
+        aria-label="force tabs"
       >
         <Tab label="Overview" onClick={() => router.push('/token/0x132784537')} />
         <Tab label="Scavenger" onClick={() => router.push('/token/0x132784537/scavenger')} />
