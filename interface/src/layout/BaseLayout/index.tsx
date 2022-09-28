@@ -12,7 +12,7 @@ import { CSSTransition } from 'react-transition-group'
 import { Theme } from '@mui/material/styles'
 
 interface Props {
-  children: ReactNode
+  children: React.ReactElement<any, string | React.JSXElementConstructor<any>>
 }
 
 export interface IBaseLayout {
@@ -34,9 +34,7 @@ const BaseLayout = ({ children }: Props) => {
     <React.Fragment>
       <Header />
       <Container disableGutters>
-        <Box>
-          {children}
-        </Box>
+        <Box>{children}</Box>
       </Container>
     </React.Fragment>
   )

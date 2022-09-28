@@ -11,11 +11,7 @@ export interface CardFooterProps {
 }
 
 const CardFooter = ({ children, ...props }: CardFooterProps) => {
-  return (
-    <MuiCardActions disableSpacing>
-      {children}
-    </MuiCardActions>
-  )
+  return <MuiCardActions disableSpacing>{children}</MuiCardActions>
 }
 
 export default CardFooter

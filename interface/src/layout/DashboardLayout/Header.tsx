@@ -31,8 +31,14 @@ function MyHeader({ address }) {
             height: 64,
           }}
         >
-          <Box sx={{ display: 'flex', border: '2px solid #fff', borderRadius: '3px'}}>
-            <Image height={42} width={42} src={`https://img.x2y2.io/v2/1/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${Math.floor(Math.random() * 10000)}/280/image.jpg`} />
+          <Box sx={{ display: 'flex', border: '2px solid #fff', borderRadius: '3px' }}>
+            <Image
+              height={42}
+              width={42}
+              src={`https://img.x2y2.io/v2/1/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${Math.floor(
+                Math.random() * 10000
+              )}/280/image.jpg`}
+            />
           </Box>
         </Box>
         <Box
@@ -44,11 +50,11 @@ function MyHeader({ address }) {
             gap: '0.5rem',
           }}
         >
-            <>
-              <Typography variant='h6' sx={{ fontWeight: 700 }}>
-                Bored Ape Yatch Club
-              </Typography>
-            </>
+          <>
+            <Typography variant="h6" sx={{ fontWeight: 700 }}>
+              Bored Ape Yatch Club
+            </Typography>
+          </>
         </Box>
       </Stack>
       <Box
