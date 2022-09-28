@@ -38,5 +38,8 @@ module.exports = withBundleAnalyzer(
       return config
     },
     optimizeFonts: true,
+    images: {
+      domains: ['img.x2y2.io']
+    }
   })
 )

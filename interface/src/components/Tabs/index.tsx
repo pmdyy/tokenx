@@ -14,7 +14,7 @@ interface StyledTabsProps {
 const StyledTabs = styled((props: StyledTabsProps) => (
   <Tabs {...props} TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }} />
 ))({
-  borderBottom: '1px solid #133153',
+  // borderBottom: '1px solid #133153',
   '& .MuiTabs-indicator': {
     display: 'flex',
     justifyContent: 'center',

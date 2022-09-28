@@ -26,25 +26,8 @@ const Wrapper = styled.div<{ theme?: Theme }>`
   display: flex;
   position: relative;
   flex-direction: column;
-  grid-area: content/content/content/content;
   flex: 1 auto;
-  overflow-y: auto;
-  height: 100vh;
   padding-bottom: 1rem;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #081422;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgb(89, 106, 118);
-    outline: none;
-    border-radius: 4px;
-  }
 `
 
 const Body = styled(Box)<{ theme?: Theme }>`

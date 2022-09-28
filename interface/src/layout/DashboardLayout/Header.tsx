@@ -1,5 +1,5 @@
 import React from 'react'
-import TollIcon from '@mui/icons-material/Toll'
+import Image from 'next/image'
 import Typography from '@mui/material/Typography'
 import styled from '@emotion/styled'
 import { Theme } from '@mui/material/styles'
@@ -16,7 +16,6 @@ const Header = styled(Box)<{ theme?: Theme }>`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightBlue};
 `
 
 function MyHeader({ address }) {
@@ -30,31 +29,32 @@ function MyHeader({ address }) {
             alignItems: 'center',
             width: 64,
             height: 64,
-            borderRight: '1px solid #133153',
           }}
         >
-          <TollIcon />
+          <Box sx={{ display: 'flex', border: '2px solid #fff', borderRadius: '3px' }}>
+            <Image
+              height={42}
+              width={42}
+              src={`https://img.x2y2.io/v2/1/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${Math.floor(
+                Math.random() * 10000
+              )}/280/image.jpg`}
+            />
+          </Box>
         </Box>
         <Box
           sx={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            borderRight: '1px solid #133153',
             padding: '0 1rem',
             gap: '0.5rem',
           }}
         >
-          {address ? (
-            <>
-              <Typography sx={{ fontWeight: 700 }}>
-                {address.toString().substring(0, 6)}...
-                {address.toString().substring(address.toString().length - 5, address.toString().length)}
-              </Typography>
-            </>
-          ) : (
-            <Skeleton animation="wave" width={130} />
-          )}
+          <>
+            <Typography variant="h6" sx={{ fontWeight: 700 }}>
+              Bored Ape Yatch Club
+            </Typography>
+          </>
         </Box>
       </Stack>
       <Box
