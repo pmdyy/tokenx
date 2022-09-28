@@ -45,7 +45,6 @@ function ElevationScroll(props: Props) {
 export default function ElevateAppBar(props) {
   return (
     <React.Fragment>
-      <ElevationScroll {...props}>
         <AppBar sx={{ backgroundColor: '#081422' }} elevation={0}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -56,7 +55,6 @@ export default function ElevateAppBar(props) {
             </Box>
           </Toolbar>
         </AppBar>
-      </ElevationScroll>
       <Toolbar />
     </React.Fragment>
   )

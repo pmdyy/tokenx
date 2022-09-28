@@ -1,16 +1,17 @@
 import React from 'react'
+import Box from '@mui/material/Box'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import IconButton from '@mui/material/IconButton'
 import Image from 'next/image'
+import Link from 'next/Link'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
+import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
+import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import styled from '@emotion/styled'
 import { Theme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
-import IconButton from '@mui/material/IconButton'
-import Skeleton from '@mui/material/Skeleton'
-import Tooltip from '@mui/material/Tooltip'
-import Stack from '@mui/material/Stack'
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
-import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone'
-import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
 
 const Header = styled(Box)<{ theme?: Theme }>`
   display: flex;
@@ -18,7 +19,20 @@ const Header = styled(Box)<{ theme?: Theme }>`
   flex-direction: row;
 `
 
-function MyHeader({ address }) {
+function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  event.preventDefault();
+  console.info('You clicked a breadcrumb.');
+}
+
+function MyHeader() {
+    const breadcrumbs = [
+    <Typography variant='caption' key="1" color="lightslategrey">
+      Home
+    </Typography>,
+    <Typography variant='caption' key="2" color="text.primary">
+      0x4324324699
+    </Typography>,
+  ];
   return (
     <Header>
       <Stack direction="row">
@@ -50,11 +64,18 @@ function MyHeader({ address }) {
             gap: '0.5rem',
           }}
         >
-          <>
+          <Stack spacing={0}>
+            <Breadcrumbs
+              sx={{ display: 'flex', alignItems: 'center'}}
+              separator={<NavigateNextIcon fontSize="small" />}
+              aria-label="breadcrumb"
+            >
+              {breadcrumbs}
+            </Breadcrumbs>
             <Typography variant="h6" sx={{ fontWeight: 700 }}>
               Bored Ape Yatch Club
             </Typography>
-          </>
+          </Stack>
         </Box>
       </Stack>
       <Box
