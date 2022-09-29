@@ -26,6 +26,7 @@ export const TableRow = styled(MuiTableRow)<{ theme?: Theme }>`
 `
 
 export const TableCell = styled(MuiTableCell)<{ theme?: Theme }>`
+  padding: 12px;
   border-bottom: 0;
 `
 
@@ -58,14 +59,6 @@ const data = [
     column: 'Avg. ETH Balance',
     value: '0.87',
   },
-  {
-    column: 'Avg. NFT Collection Value',
-    value: '0.013',
-  },
-  {
-    column: 'Med. NFT Collection Value',
-    value: '0.0036',
-  },
 ]
 
 function DataCard({ title, ...props }) {
@@ -73,7 +66,7 @@ function DataCard({ title, ...props }) {
     <Card>
       <Card.Header title={title} />
       <Card.Body padding={0}>
-        <Table size="small">
+        <Table>
           <TableBody data-grid="wow">
             {data.map((row, index) => (
               <TableRow key={index}>
