@@ -1,6 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import Breadcrumbs from '@mui/material/Breadcrumbs'
+import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import IconButton from '@mui/material/IconButton'
 import Image from 'next/image'
 import Link from 'next/Link'
@@ -19,20 +19,27 @@ const Header = styled(Box)<{ theme?: Theme }>`
   flex-direction: row;
 `
 
+const Breadcrumbs = styled(MuiBreadcrumbs)`
+  .MuiBreadcrumbs-li {
+    display: flex;
+    align-items: center;
+  }
+`
+
 function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
+  event.preventDefault()
+  console.info('You clicked a breadcrumb.')
 }
 
 function MyHeader() {
-    const breadcrumbs = [
-    <Typography variant='caption' key="1" color="lightslategrey">
+  const breadcrumbs = [
+    <Typography variant="caption" key="1" color="lightslategrey">
       Home
     </Typography>,
-    <Typography variant='caption' key="2" color="text.primary">
+    <Typography variant="caption" key="2" color="text.primary">
       0x4324324699
     </Typography>,
-  ];
+  ]
   return (
     <Header>
       <Stack direction="row">
@@ -41,8 +48,6 @@ function MyHeader() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            width: 64,
-            height: 64,
           }}
         >
           <Box sx={{ display: 'flex', border: '2px solid #fff', borderRadius: '3px' }}>
@@ -66,7 +71,7 @@ function MyHeader() {
         >
           <Stack spacing={0}>
             <Breadcrumbs
-              sx={{ display: 'flex', alignItems: 'center'}}
+              sx={{ display: 'flex', alignItems: 'center' }}
               separator={<NavigateNextIcon fontSize="small" />}
               aria-label="breadcrumb"
             >
@@ -79,7 +84,6 @@ function MyHeader() {
         </Box>
       </Stack>
       <Box
-        px={2}
         sx={{
           display: 'flex',
           justifyContent: 'center',

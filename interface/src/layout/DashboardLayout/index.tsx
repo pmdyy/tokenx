@@ -34,13 +34,13 @@ const Body = styled(Box)<{ theme?: Theme }>`
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-top: 1.5rem;
 `
 
 const BodyWrapper = styled(Box)<{ theme?: Theme }>`
   display: grid;
-  width: 1700px;
+  width: 100%;
   margin-bottom: 8rem;
-  padding: 1rem;
   gap: 1rem;
 `
 

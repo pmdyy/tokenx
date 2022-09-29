@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 const Box = dynamic(() => import('@mui/material/Box'), { ssr: true })
 const Header = dynamic(() => import('components/Header'), { ssr: true })
 import CollapsibleSidebar from 'components/Sidebar'
-import Container from '@mui/material/Container'
+import MuiContainer from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 import styled from '@emotion/styled'
 import { CSSTransition } from 'react-transition-group'
@@ -19,21 +19,16 @@ export interface IBaseLayout {
   getLayout: (page: React.ReactNode) => React.ReactNode
 }
 
-const Wrap = styled(Box)<{ theme?: Theme }>`
-  background: theme.palette.background.default;
-
-  a {
-    font-size: 1em;
-    text-decoration: none;
-    color: theme.palette.common.white;
-  }
+const Container = styled(MuiContainer)`
+  padding-top: 24px;
+  max-width: 1024px;
 `
 
 const BaseLayout = ({ children }: Props) => {
   return (
     <React.Fragment>
       <Header />
-      <Container disableGutters>
+      <Container maxWidth={false} disableGutters>
         <Box>{children}</Box>
       </Container>
     </React.Fragment>
