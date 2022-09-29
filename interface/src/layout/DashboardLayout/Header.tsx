@@ -23,6 +23,10 @@ const Breadcrumbs = styled(MuiBreadcrumbs)`
     display: flex;
     align-items: center;
   }
+  .MuiBreadcrumbs-separator {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
 `
 
 function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {

@@ -13,7 +13,11 @@ const Nav = () => {
   }
 
   return (
-    <Box>
+    <Box
+      sx={{
+        paddingTop: '0.5rem',
+      }}
+    >
       <Tabs
         value={value}
         onChange={handleChange}
@@ -23,7 +27,9 @@ const Nav = () => {
         allowScrollButtonsMobile={false}
       >
         <Tab label="Overview" onClick={() => router.push('/token/0x132784537')} />
-        <Tab label="Scavenger" onClick={() => router.push('/token/0x132784537/scavenger')} />
+        <Tab label="Holders" onClick={() => router.push('/token/0x132784537/scavenger')} />
+        <Tab label="Cheapskates" onClick={() => router.push('/token/0x132784537/scavenger')} />
+        <Tab label="Network" onClick={() => router.push('/token/0x132784537/scavenger')} />
       </Tabs>
     </Box>
   )

@@ -20,8 +20,10 @@ export interface IBaseLayout {
 }
 
 const Container = styled(MuiContainer)`
-  padding-top: 24px;
   max-width: 1024px;
+  padding-top: 24px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 `
 
 const BaseLayout = ({ children }: Props) => {
