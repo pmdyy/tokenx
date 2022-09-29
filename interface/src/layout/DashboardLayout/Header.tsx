@@ -30,13 +30,13 @@ function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
   console.info('You clicked a breadcrumb.')
 }
 
-function MyHeader() {
+function MyHeader({ address }) {
   const breadcrumbs = [
     <Typography variant="caption" key="1" color="lightslategrey">
       Home
     </Typography>,
     <Typography variant="caption" key="2" color="text.primary">
-      0x4324324699
+      {address}
     </Typography>,
   ]
   return (
